@@ -37,8 +37,13 @@ font pango: Noto Sans 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
+# Disactive Focus follows mouse
+focus_follows_mouse no
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -206,6 +211,7 @@ bindsym XF86MonBrightnessDown exec "/usr/bin/brightnessctl s 10%-"
 bindsym $mod+Ctrl+l exec "/usr/bin/betterlockscreen_rapid 10 10"
 
 # Autostart
+exec --no-startup-id "setxkbmap -option caps:swapescape"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "pa-applet"
 exec --no-startup-id "blueman-tray"
@@ -216,8 +222,8 @@ exec --no-startup-id "dunst"
 #exec --no-startup-id "pomotroid"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id "xmodmap ~/.Xmodmapus"
-exec --no-startup-id "feh --bg-scale `find ~/wallpaper/* | sort -R | tail -1` --bg-scale  `find ~/wallpaper/* | sort -R | tail -1`"
-exec --no-startup-id "xautolock -time 3 -locker 'betterlockscreen_rapid 10 10'"
+exec --no-startup-id "feh --bg-scale `find ~/Pictures/wallpaper/* | sort -R | tail -1` --bg-scale  `find ~/Pictures/wallpaper/* | sort -R | tail -1`"
+exec --no-startup-id "xautolock -time 10 -locker 'betterlockscreen_rapid 10 10'"
 
 # PrintScreen
 bindsym Print exec /usr/bin/flameshot gui

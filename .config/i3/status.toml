@@ -1,7 +1,7 @@
 theme = "solarized-dark"
 
 [icons]
-name = "awesome5"
+name = "awesome"
 
 [[block]]
 block = "battery"
