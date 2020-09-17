@@ -1,7 +1,5 @@
-theme = "solarized-dark"
-
-[icons]
-name = "awesome"
+icons = "awesome5"
+#theme = "solarized-dark"
 
 [[block]]
 block = "battery"

@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Noto Sans 10
+#font pango:Noto Mono for Powerline 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -188,9 +188,9 @@ bindsym $mod+r mode "resize"
 #}
 
 bar {
-    font pango:DejaVu Sans Mono 10, Font Awesome 5 Free 10 
+    font pango:DejaVu Sans Mono 10, Icons 10 
     position top
-  	tray_output primary
+  	    tray_output primary
     status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
     colors {
         separator #666666
@@ -202,6 +202,17 @@ bar {
         urgent_workspace #2f343a #900000 #ffffff
     }
 }
+
+# Launches browsers
+mode "browser" {
+    bindsym --release f exec firefox; mode "default"
+    bindsym --release b exec brave; mode "default"
+    bindsym --release q exec qutebrowser; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+b mode "browser"
 
 # Manage screen brightness
 bindsym XF86MonBrightnessUp exec "/usr/bin/brightnessctl s 10%+"
@@ -246,10 +257,17 @@ bindsym $mod+t [title="Microsoft Teams$"], scratchpad show
 for_window [title="Microsoft Teams Notification"] floating enable
 
 # Bitwarden in scratchpad
-for_window [class="Bitwarden"] sticky enable border none
-for_window [class="Bitwarden"] move to scratchpad
-exec --no-startup-id bitwarden
-bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
+#for_window [class="Bitwarden"] sticky enable border none
+#for_window [class="Bitwarden"] move to scratchpad
+#exec --no-startup-id bitwarden
+#bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
+
+# 1Password in scratchpad
+for_window [class="1Password"] sticky enable border none
+for_window [class="1Password"] move to scratchpad
+exec --no-startup-id 1Password
+bindsym $mod+o [class="1Password"] scratchpad show
+for_window [class="1Password"] floating enable
 
 # Pomotroid in scratchpad
 for_window [class="pomotroid"] sticky enable border none
