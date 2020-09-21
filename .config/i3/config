@@ -263,16 +263,16 @@ for_window [title="Microsoft Teams Notification"] floating enable
 #bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
 
 # 1Password in scratchpad
-for_window [class="1Password"] sticky enable border none
-for_window [class="1Password"] move to scratchpad
+for_window [class="1Password$"] sticky enable border none
+for_window [class="1Password$"] move to scratchpad
 exec --no-startup-id 1Password
-bindsym $mod+o [class="1Password"] scratchpad show
-for_window [class="1Password"] floating enable
+bindsym $mod+o [class="1Password$"] scratchpad show
+for_window [class="1Password$"] scratchpad show resize set 800 550
 
-# Pomotroid in scratchpad
-for_window [class="pomotroid"] sticky enable border none
-for_window [class="pomotroid"] move to scratchpad
-exec --no-startup-id pomotroid
-bindsym $mod+Shift+p [class="pomotroid"] scratchpad show
-
+# Telegram
+for_window [title="Telegram$"] sticky enable border none
+for_window [title="Telegram$"] move to scratchpad
+exec --no-startup-id telegram-desktop
+bindsym $mod+i [title="Telegram$"] scratchpad show
+for_window [title="Telegram$"] scratchpad show resize set 800 550
 
