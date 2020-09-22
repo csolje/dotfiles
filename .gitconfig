@@ -42,6 +42,7 @@ untracked = cyan
     cl = clone
     ci = commit
     co = checkout
+    sw = switch
     br = branch
     r = reset
     cp = cherry-pick
@@ -127,6 +128,8 @@ untracked = cyan
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
+    # Search for a branch
+    which = "!git branch | grep -i"
     #list remotes
     rem="!git config -l | grep remote.*url | tail -n +2"
 
@@ -149,9 +152,6 @@ untracked = cyan
     gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
     #rename branch tree to done-
     done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
-    #add bitbucket remote
-    ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
-    # }}}
     # worktree list {{{
     wl = worktree list
     # undo from here http://megakemp.com/2016/08/25/git-undo/
