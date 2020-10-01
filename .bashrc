@@ -1,13 +1,6 @@
-#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
 export OSH=/home/chrs/.oh-my-bash
 
-#OSH_THEME="modern"
+#OSH_THEME="mbriggs"
 OSH_THEME="slick"
 
 competions=(
@@ -30,9 +23,6 @@ plugins=(
 )
 source $OSH/oh-my-bash.sh
 
-alias ls='ls --color=auto'
-alias code='code-insiders'
-alias cdc='cd ~/code'
 #PS1='[\u@\h \W]\$ '
 
 # Path
@@ -46,6 +36,10 @@ alias la='ls -alh'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias ls='ls --color=auto'
+alias code='code-insiders'
+alias cdc='cd ~/code'
+alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
 
 ## Vim stuff
 alias v='vim'
@@ -63,6 +57,8 @@ alias vP='vim ~/.bash_profile'
 ## Configurations
 alias vi3C='vim ~/.config/i3/config'
 alias vi3S='vim ~/.config/i3/status.toml'
+alias gitconfig='vim ~/.gitconfig'
+
 ## SSH alias
 alias vsC='vim ~/.ssh/config'
 alias vsK='vim ~/.ssh/known_hosts'
@@ -73,14 +69,14 @@ alias k='exit'
 ## Apps
 alias reloadV='source ~/.vimrc'
 alias reloadB='source ~/.bashrc'
-alias irc='weechat-curses'
-alias startkvm='wakeonlan 44:1e:a1:3b:78:66'
-alias tor='ssh -L 8080:localhost:8080 odin'
 
 ## Tmux
 alias t='tmux'
 alias tn='tmux new -s'
 alias ta='tmux a -t'
+
+# Ensure DK modifiers
+xmodmap ~/.Xmodmapus
 
 # Autocomplete
 source  /usr/share/bash-complete-alias/complete_alias
@@ -88,12 +84,13 @@ complete -F _complete_alias config
 
 # History
 export HISTSIZE=10000
+export HISTFILESIZE=$HISTSIZE
 export HISTTIMEFORMAT='%F %T - '
 export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
+#shopt -s histappend
 
 # Default apps
-export TERMINAL=urxvt
+export TERMINAL=st
 export VISUAL=vim
 export EDITOR=vim
 export BROWSER=firefox
@@ -105,6 +102,7 @@ export GDM_LANG=en_US.UTF-8
 # SSH-agent
 if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
   eval `ssh-agent -s` > /dev/null
+  ssh-add ~/.ssh/*.pem
 fi
 
 # Kubernetes / k8s
