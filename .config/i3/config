@@ -106,7 +106,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -229,12 +229,13 @@ exec --no-startup-id "blueman-tray"
 exec --no-startup-id "clipit"
 #exec --no-startup-id "pulseaudio --start; sleep 5; pulseadio -k; sleep 5; pulseaudio --start"
 exec --no-startup-id "dunst"
-#exec --no-startup-id "dropbox"
-#exec --no-startup-id "pomotroid"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id "xmodmap ~/.Xmodmapus"
 exec --no-startup-id "feh --bg-scale `find ~/Pictures/wallpaper/* | sort -R | tail -1` --bg-scale  `find ~/Pictures/wallpaper/* | sort -R | tail -1`"
 exec --no-startup-id "xautolock -time 10 -locker 'betterlockscreen_rapid 10 10'"
+
+# Updating Shared ssh config
+exec --no-startup-id "~/bin/sshSharedUpdate.sh"
 
 # PrintScreen
 bindsym Print exec /usr/bin/flameshot gui
@@ -263,16 +264,14 @@ for_window [title="Microsoft Teams Notification"] floating enable
 #bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
 
 # 1Password in scratchpad
-for_window [class="1Password$"] sticky enable border none
-for_window [class="1Password$"] move to scratchpad
+for_window [class="1Password"] sticky enable border none
+for_window [class="1Password"] move to scratchpad
 exec --no-startup-id 1Password
-bindsym $mod+o [class="1Password$"] scratchpad show
-for_window [class="1Password$"] scratchpad show resize set 800 550
+bindsym $mod+o [class="1Password"] scratchpad show resize set 800 550
 
 # Telegram
 for_window [title="Telegram$"] sticky enable border none
 for_window [title="Telegram$"] move to scratchpad
 exec --no-startup-id telegram-desktop
-bindsym $mod+i [title="Telegram$"] scratchpad show
-for_window [title="Telegram$"] scratchpad show resize set 800 550
+bindsym $mod+i [title="Telegram$"] scratchpad show resize set 800 550
 
