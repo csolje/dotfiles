@@ -1,5 +1,22 @@
-icons = "awesome5"
-#theme = "solarized-dark"
+theme = "solarized-dark"
+
+idle_bg = "#002b42"
+idle_fg = "#93a1a1"
+info_bg = "#268bd2"
+info_fg = "#002b36"
+good_bg = "#859900"
+good_fg = "#002b36"
+warning_bg = "#b58900"
+warning_fg = "#002b36"
+critical_bg = "#dc322f"
+critical_fg = "#002b36"
+separator = "\ue0b2"
+separator_bg = "auto"
+separator_fg = "auto"
+alternating_tint_bg = "#000000"
+
+[icons]
+name = "awesome"
 
 [[block]]
 block = "battery"
@@ -45,4 +62,3 @@ block = "sound"
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
-
