@@ -1,11 +1,11 @@
 [core]
-	editor = /usr/local/bin/vim
+	editor = /usr/bin/vim
 	excludesfile = /Users/csolje/.gitignore_global
 	autocrlf = input
 	pager=less -x4
 
 [user]
-	email = csolje@gmail.com
+	email = christian.solje@aller.com
 	name = Christian Solje
 [pull]
 	rebase = false
