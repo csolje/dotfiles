@@ -43,6 +43,7 @@ alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
 
 ## Vim stuff
 alias v='vim'
+alias vi='vim'
 alias vV='vim ~/.vimrc'
 
 ## Zsh Stuff
