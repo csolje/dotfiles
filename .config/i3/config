@@ -17,7 +17,8 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
+font pango: Noto Sans 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -42,8 +43,9 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym $mod+Shift+Return exec i3-sensible-terminal
-bindsym $mod+Return exec st
+#bindsym $mod+Shift+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec st
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -187,22 +189,45 @@ bindsym $mod+r mode "resize"
 #	tray_output primary
 #}
 
+#bar {
+##    font pango:DejaVu Sans Mono 10, Icons 10
+#    position top
+#  	    tray_output primary
+#    status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
+#    colors {
+#        separator #666666
+#        background #222222
+#        statusline #dddddd
+#        focused_workspace #0088CC #0088CC #ffffff
+#        active_workspace #333333 #333333 #ffffff
+#        inactive_workspace #333333 #333333 #888888
+#        urgent_workspace #2f343a #900000 #ffffff
+#    }
+#}
 bar {
-    font pango:DejaVu Sans Mono 10, Icons 10 
+    i3bar_command i3bar
+    status_command py3status -c ~/.config/i3/i3status.conf
     position top
-  	    tray_output primary
-    status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
-    colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-}
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary
+   tray_output primary
+# output eDP1
 
+# bindsym button4 nop bindsym button5 nop
+    font xft:URWGothic-Book 11
+# strip_workspace_numbers yes
+    colors {
+        background #4a4a4a
+        statusline #F9FAF9
+        separator  #454947
+
+        focused_workspace  #F9FAF9 $acolor #F9FAF9
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #283339 #EEE8D5
+        binding_mode       $acolor #2C2C2C #F9FAF9
+        urgent_workspace   $acolor #FDF6E3 #E5201D
+        }
+
+    }
 # Launches browsers
 mode "browser" {
     bindsym --release f exec firefox; mode "default"
@@ -270,8 +295,8 @@ exec --no-startup-id 1Password
 bindsym $mod+o [class="1Password"] scratchpad show resize set 800 550
 
 # Telegram
-for_window [title="Telegram$"] sticky enable border none
-for_window [title="Telegram$"] move to scratchpad
-exec --no-startup-id telegram-desktop
-bindsym $mod+i [title="Telegram$"] scratchpad show resize set 800 550
+#for_window [class="Telegram$"] sticky enable border none
+#for_window [class="Telegram$"] move to scratchpad
+#exec --no-startup-id telegram-desktop
+#bindsym $mod+i [class="Telegram$"] scratchpad show resize set 800 550
 
