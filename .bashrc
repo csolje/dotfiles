@@ -40,10 +40,12 @@ alias ls='ls --color=auto'
 alias code='code-insiders'
 alias cdc='cd ~/code'
 alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
+alias ssh='kitty +kitten ssh'
 
 ## Vim stuff
+alias vim='nvim'
 alias v='vim'
-alias vi='vim'
+#alias vi='vim'
 alias vV='vim ~/.vimrc'
 
 ## Zsh Stuff
@@ -103,9 +105,11 @@ export GDM_LANG=en_US.UTF-8
 # SSH-agent
 if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
   eval `ssh-agent -s` > /dev/null
-  ssh-add ~/.ssh/*.pem
+  ssh-add -q ~/.ssh/*.pem
+  ssh-add -q ~/.ssh/id_rsa
 fi
 
+source <(kitty + complete setup bash)
 # Kubernetes / k8s
 # source <(kubectl completion bash)
 # alias k8c='kubectl'
