@@ -36,7 +36,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
@@ -45,10 +45,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
-"Plug 'vuciv/vim-bujo'
+Plug 'vuciv/vim-bujo'
 Plug 'tpope/vim-dispatch'
-Plug '/home/mpaulson/personal/vim-apm'
-"Plug 'theprimeagen/vim-be-good', {'do': './install.sh'}
+Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 
@@ -137,7 +136,27 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap X "_d
 
-" vim TODO
+" space-1 insert "!" commenting
+nnoremap <leader>1 :norm 0i!<cr>
+vnoremap <leader>1 :norm 0i!<cr>
+
+" space-' insert """ commenting
+nnoremap <leader>' :norm 0i"<cr>
+vnoremap <leader>' :norm 0i"<cr>
+
+" space-3 insert "#" commenting
+nnoremap <leader>3 :norm 0i#<cr>
+vnoremap <leader>3 :norm 0i#<cr>
+
+" space-- insert "--" commenting
+nnoremap <leader>- :norm 0i--<cr>
+vnoremap <leader>- :norm 0i--<cr>
+
+" space-6 uncomment
+nnoremap <leader>6 :norm ^x<cr>
+vnoremap <leader>6 :norm ^x<cr>
+
+    " vim TODO
 nmap <Leader>tu <Plug>BujoChecknormal
 nmap <Leader>th <Plug>BujoAddnormal
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
