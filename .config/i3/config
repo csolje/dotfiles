@@ -45,6 +45,7 @@ focus_follows_mouse no
 # start a terminal
 #bindsym $mod+Shift+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec st
+bindsym $mod+Shift+Return exec st
 bindsym $mod+Return exec kitty
 
 # kill focused window
@@ -274,7 +275,7 @@ bindsym $mod+u [class="^Spotify$"], scratchpad show
 # Slack in scratchpad
 for_window [class="^Slack$"] move to scratchpad
 exec --no-startup-id slack
-bindsym $mod+p [class="^Slack$"], scratchpad show
+bindsym $mod+y [class="^Slack$"], scratchpad show
 
 # Teams in scratchpad
 for_window [title="Microsoft Teams$"] move to scratchpad
@@ -283,20 +284,38 @@ bindsym $mod+t [title="Microsoft Teams$"], scratchpad show
 for_window [title="Microsoft Teams Notification"] floating enable
 
 # Bitwarden in scratchpad
-#for_window [class="Bitwarden"] sticky enable border none
-#for_window [class="Bitwarden"] move to scratchpad
-#exec --no-startup-id bitwarden
-#bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
+for_window [class="Bitwarden"] sticky enable border none
+for_window [class="Bitwarden"] move to scratchpad
+exec --no-startup-id bitwarden
+bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
 
 # 1Password in scratchpad
 for_window [class="1Password"] sticky enable border none
 for_window [class="1Password"] move to scratchpad
-exec --no-startup-id 1Password
-bindsym $mod+o [class="1Password"] scratchpad show resize set 800 550
+exec --no-startup-id 1password
+bindsym $mod+p [class="1Password"] scratchpad show resize set 800 550
 
 # Telegram
-#for_window [class="Telegram$"] sticky enable border none
-#for_window [class="Telegram$"] move to scratchpad
-#exec --no-startup-id telegram-desktop
-#bindsym $mod+i [class="Telegram$"] scratchpad show resize set 800 550
+for_window [class="TelegramDesktop$"] sticky enable border none
+for_window [class="TelegramDesktop$"] move to scratchpad
+exec --no-startup-id telegram-desktop
+bindsym $mod+i [class="TelegramDesktop$"] scratchpad show resize set 800 550
 
+# Set shutdown, restart and locking
+bindsym $mod+Shift+Ctrl+0 mode "$mod_system"
+set $mod_system (l)ock, (e)xit, switch_(u)ser, (Shift+s)uspend, (s)uspend+lock, (h)ibernate, (Shift+h)ibernate+lock, (r)eboot, shut(d)own
+mode "$mod_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym s exec --no-startup-id "i3exit lock; i3exit suspend", mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym Shift+h exec --no-startup-id "i3exit lock; i3exit hibernate", mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym d exec --no-startup-id i3exit shutdown, mode "default"
+
+    # Exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    }
