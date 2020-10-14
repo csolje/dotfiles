@@ -30,7 +30,6 @@ export PATH=$PATH:~/bin:/home/chrs/.local/bin/
 
 # Aliases
 alias vi='/usr/bin/vim'
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='ls'
 alias la='ls -alh'
 alias rm='rm -i'
@@ -41,6 +40,10 @@ alias code='code-insiders'
 alias cdc='cd ~/code'
 alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
 alias ssh='kitty +kitten ssh'
+
+# Dotfiles handeling
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+config config status.showUntrakedFiles no
 
 ## Vim stuff
 alias vim='nvim'
@@ -101,6 +104,15 @@ export BROWSER=firefox
 # Lang
 export LANG=en_US.UTF-8
 export GDM_LANG=en_US.UTF-8
+
+# X Terminal titles
+#case "$TERM" in
+#	xterm*|rxvt*|st-*)
+#		PROMPT_COMMAND='echo -ne "\033]0;${USER}@{HOSTNAME}: ${PWD}\007"'
+#		;;
+#	*)
+#		;;
+#esac
 
 # SSH-agent
 if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
