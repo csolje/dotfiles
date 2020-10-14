@@ -67,7 +67,7 @@ filetype plugin indent on
 
 "*****************************************************************************
 "" Basic Setup
-"*****************************************************************************"
+"*****************************************************************************
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -132,6 +132,7 @@ syntax on
 set ruler
 set number
 set relativenumber
+set cursorline
 set nowrap
 set termguicolors
 set colorcolumn=80
