@@ -47,9 +47,10 @@ config config status.showUntrakedFiles no
 
 ## Vim stuff
 alias vim='nvim'
-alias v='vim'
-#alias vi='vim'
-alias vV='vim ~/.vimrc'
+alias v='nvim'
+#alias vi='nvim'
+#alias vV='vim ~/.vimrc'
+alias vV='nvim ~/.config/nvim/init.vim'
 
 ## Zsh Stuff
 alias vZ='vim ~/.zshrc'
