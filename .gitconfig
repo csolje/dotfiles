@@ -1,5 +1,5 @@
 [core]
-	editor = /usr/bin/vim
+	editor = nvim
 	excludesfile = /Users/csolje/.gitignore_global
 	autocrlf = input
 	pager=less -x4
