@@ -43,10 +43,10 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-#bindsym $mod+Shift+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec st
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
+bindsym $mod+Ctrl+Return exec st
 bindsym $mod+Shift+Return exec kitty
+#bindsym $mod+Shift+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -214,7 +214,8 @@ bar {
 # output eDP1
 
 # bindsym button4 nop bindsym button5 nop
-    font xft:URWGothic-Book 11
+font pango:DejaVu Sans Mono, FontAwesome 10 
+#font xft:URWGothic-Book 11
 # strip_workspace_numbers yes
     colors {
         background #4a4a4a
