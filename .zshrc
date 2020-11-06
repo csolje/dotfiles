@@ -74,7 +74,8 @@ for ext in mpg wmv avi mkv;        do alias -s $ext=$MOVPLAY; done
 for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 
 ## Alias
-alias vi='/usr/bin/vim'
+#alias vi='/usr/bin/vim'
+alias vi='nvim'
 alias ls='ls'
 alias la='ls -alh'
 alias rm='rm -i'
@@ -84,6 +85,7 @@ alias ls='ls --color=auto'
 alias git='noglob git'
 alias code='code-insiders'
 alias cdc='cd ~/code'
+alias codeenv='sh ~/bin/tmux.sh'
 alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
 alias starwars='telnet towel.blinkenlights.nl'
 alias weather='curl wttr.in'
