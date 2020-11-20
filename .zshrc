@@ -63,8 +63,8 @@ export MOVPLAY="mpv"
 export PICVIEW="feh"
 export SNDPLAY="mpv"
 export PULSE_LATENCY_MSEC=60
-#export TERM="xterm-256color"
-export TERM="st"
+export TERM="xterm-256color"
+#export TERM="st"
 
 # File Extensions
 for ext in html org php com net no;    do alias -s $ext=$BROWSER; done
@@ -86,12 +86,14 @@ alias git='noglob git'
 alias code='code-insiders'
 alias cdc='cd ~/code'
 alias codeenv='sh ~/bin/tmux.sh'
-alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
+alias UpdateSSHShared='sh ~/bin/UpdateSSHShared.sh'
 alias starwars='telnet towel.blinkenlights.nl'
 alias weather='curl wttr.in'
 alias wallpaper='sh ~/bin/wallpaper.sh'
 alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
 alias pastebin='sh ~/bin/pastebin.sh'
+alias awslogin='sh ~/bin/awslogin.sh'
+alias fix_keyboard='sh ~/bin/keyboard.sh'
 
 
 # Dotfiles handeling
@@ -178,7 +180,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
-plugins=(git aws archlinux ansible vi-mode npm node nmap themes tmux colorize)
+plugins=(git aws archlinux ansible vi-mode npm node nmap themes colorize)
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 
