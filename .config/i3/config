@@ -262,7 +262,7 @@ exec --no-startup-id "feh --bg-scale `find ~/Pictures/wallpaper/* | sort -R | ta
 exec --no-startup-id "xautolock -time 10 -locker 'betterlockscreen_rapid 10 10'"
 
 # Updating Shared ssh config
-exec --no-startup-id "~/bin/sshSharedUpdate.sh"
+exec --no-startup-id "~/bin/UpdateSSHShared.sh"
 
 # PrintScreen
 bindsym Print exec /usr/bin/flameshot gui
