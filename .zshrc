@@ -86,7 +86,7 @@ alias git='noglob git'
 alias code='code-insiders'
 alias cdc='cd ~/code'
 alias codeenv='sh ~/bin/tmux.sh'
-alias UpdateSSHShared='sh ~/bin/UpdateSSHShared.sh'
+alias updateSSHShared='sh ~/bin/UpdateSSHShared.sh'
 alias starwars='telnet towel.blinkenlights.nl'
 alias weather='curl wttr.in'
 alias wallpaper='sh ~/bin/wallpaper.sh'
@@ -94,7 +94,8 @@ alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
 alias pastebin='sh ~/bin/pastebin.sh'
 alias awslogin='sh ~/bin/awslogin.sh'
 alias fix_keyboard='sh ~/bin/keyboard.sh'
-
+alias mount_nas='sh ~/bin/mount_nas.sh'
+alias umount_nas='sh ~/bin/umount_nas.sh'
 
 # Dotfiles handeling
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
