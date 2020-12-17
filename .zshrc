@@ -86,11 +86,12 @@ alias git='noglob git'
 alias code='code-insiders'
 alias cdc='cd ~/code'
 alias codeenv='sh ~/bin/tmux.sh'
-alias updateSSHShared='sh ~/bin/UpdateSSHShared.sh'
 alias starwars='telnet towel.blinkenlights.nl'
 alias weather='curl wttr.in'
 alias wallpaper='sh ~/bin/wallpaper.sh'
 alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
+alias updateSSHShared='sh ~/bin/UpdateSSHShared.sh'
+alias updateOMZSH='omz update'
 alias pastebin='sh ~/bin/pastebin.sh'
 alias awslogin='sh ~/bin/awslogin.sh'
 alias fix_keyboard='sh ~/bin/keyboard.sh'
@@ -164,9 +165,10 @@ alias M='mpv'
 alias ryper='ssh -fNR 7777:localhost:22 tunnel@ryper.org'
 
 
-## Tmux
+## Tmux and Byobu
 alias tnew='tmux new -s'
 alias tattach='tmux a -t'
+alias b='byobu'
 
 # Ensure DK modifiers
 xmodmap ~/.Xmodmapus
