@@ -4,10 +4,10 @@ export ZSH="/home/chrs/.oh-my-zsh"
 #ZSH_THEME="Soliah"
 ZSH_THEME="juanghurtado"
 
-#POWERLINE_RIGHT_A="date"
-#POWERLINE_RIGHT_A="exit-status"
-#POWERLINE_FULL_CURRENT_PATH="true"
-#POWERLINE_SHOW_GIT_ON_RIGHT="true"
+POWERLINE_RIGHT_A="date"
+POWERLINE_RIGHT_A="exit-status"
+POWERLINE_FULL_CURRENT_PATH="true"
+POWERLINE_SHOW_GIT_ON_RIGHT="true"
 POWERLINE_DETECT_SSH="true"
 POWERLINE_DATE_FORMAT="%D{%d-%m}"
 POWERLINE_HIDE_HOST_NAME="true"
@@ -63,8 +63,9 @@ export MOVPLAY="mpv"
 export PICVIEW="feh"
 export SNDPLAY="mpv"
 export PULSE_LATENCY_MSEC=60
-export TERM="xterm-256color"
-#export TERM="st"
+export COLORTERM="truecolor"
+export TERMINAL="alacritty"
+export WM="i3wm"
 
 # File Extensions
 for ext in html org php com net no;    do alias -s $ext=$BROWSER; done
@@ -97,6 +98,8 @@ alias awslogin='sh ~/bin/awslogin.sh'
 alias fix_keyboard='sh ~/bin/keyboard.sh'
 alias mount_nas='sh ~/bin/mount_nas.sh'
 alias umount_nas='sh ~/bin/umount_nas.sh'
+alias getexternalip='sh ~/bin/externalip.sh'
+alias externalip='w3m -dump whatismyip.akamai.com'
 
 # Dotfiles handeling
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
