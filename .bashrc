@@ -28,18 +28,43 @@ source $OSH/oh-my-bash.sh
 # Path
 export PATH=$PATH:~/bin:/home/chrs/.local/bin/
 
+# Export settings
+export EDITOR="nvim"
+export PAGER="less"
+export BROWSER="qutebrowser"
+export BROWSERCLI="w3m"
+export MOVPLAY="mpv"
+export PICVIEW="feh"
+export SNDPLAY="mpv"
+export PULSE_LATENCY_MSEC=60
+export COLORTERM="truecolor"
+export TERMINAL="alacritty"
+export TERM="xterm-256color"
+export WM="i3wm"
+
 # Aliases
-alias vi='/usr/bin/vim'
+alias vi='/usr/bin/nvim'
 alias ls='ls'
-alias la='ls -alh'
+alias la='ls -lhtra'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls --color=auto'
 alias code='code-insiders'
 alias cdc='cd ~/code'
-alias sshSharedUpdate='sh ~/bin/sshSharedUpdate.sh'
-alias ssh='kitty +kitten ssh'
+alias codeenv='sh ~/bin/tmux.sh'
+alias updateSSHShared='sh ~/bin/sshSharedUpdate.sh'
+alias pastebin='sh ~/bin/pastbin.sh'
+alias awslogin='sh ~/bin/awslogin.sh'
+alias fix_keyboard='sh ~/bin/keyboard.sh'
+alias weather='curl wttr.in'
+alias wallpaper='sh ~/bin/wallpaper.sh'
+alias mount_nas='sh ~/bin/mount_nas.sh'
+alias umount_nas='sh ~/bin/umount_nas.sh'
+alias getexternalip='sh ~/bin/externalip.sh'
+alias externalip='w3m -dump whatismyip.akamai.com'
+
+#alias ssh='kitty +kitten ssh'
 
 # Dotfiles handeling
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -54,7 +79,6 @@ alias vV='nvim ~/.config/nvim/init.vim'
 
 ## Zsh Stuff
 alias vZ='vim ~/.zshrc'
-alias nvZ='nvim ~/.zshrc'
 alias Z='source ~/.zshrc'
 
 ## Bash Stuff
