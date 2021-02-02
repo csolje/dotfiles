@@ -65,6 +65,7 @@ export SNDPLAY="mpv"
 export PULSE_LATENCY_MSEC=60
 export COLORTERM="truecolor"
 export TERMINAL="alacritty"
+export TERM="xterm-256color"
 export WM="i3wm"
 
 # File Extensions
@@ -186,7 +187,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
-plugins=(git aws archlinux ansible vi-mode npm node nmap themes colorize)
+plugins=(git git-extras aws archlinux ansible branch vi-mode npm node nmap themes colorize sudo tmux)
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 
