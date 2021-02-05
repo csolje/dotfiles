@@ -18,7 +18,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
-font pango:Mononoki Nerd Font 12
+font ttf-font-awesome:  pango:Mononoki Nerd Font 12
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -250,7 +250,7 @@ bindsym $mod+Ctrl+l exec "/usr/bin/betterlockscreen_rapid 10 10"
 # Autostart
 exec --no-startup-id "setxkbmap -option caps:swapescape"
 exec --no-startup-id "nm-applet"
-exec --no-startup-id "pa-applet"
+exec --no-startup-id "pasystray"
 exec --no-startup-id "blueman-tray"
 exec --no-startup-id "clipit"
 #exec --no-startup-id "pulseaudio --start; sleep 5; pulseadio -k; sleep 5; pulseaudio --start"
@@ -259,6 +259,16 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id "xmodmap ~/.Xmodmapus"
 exec --no-startup-id "feh --bg-scale `find ~/Pictures/wallpaper/* | sort -R | tail -1` --bg-scale  `find ~/Pictures/wallpaper/* | sort -R | tail -1`"
 exec --no-startup-id "xautolock -time 10 -locker 'betterlockscreen_rapid 10 10'"
+exec --no-startup-id "flameshot"
+
+# Pomotroid in scratchpad
+for_window [class="pomotroid"] sticky enable border none
+for_window [class="pomotroid"] move to scratchpad
+exec --no-startup-id pomotroid
+bindsym $mod+Shift+p [class="pomotroid"] scratchpad show
+
+
+for_window [class="Gnome-calculator"] floating enable border pixel 1
 
 # Updating Shared ssh config
 exec --no-startup-id "~/bin/UpdateSSHShared.sh"

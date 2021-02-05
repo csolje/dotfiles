@@ -51,7 +51,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 # User configuration
 
-export PATH="~/bin:/home/chrs/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/home/chrs/bin:/home/chrs/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Export settings
@@ -146,13 +146,12 @@ alias yta="youtube-dl --add-metadata -xic" # Downloads only audio
 
 ## Pacman
 alias y='yay'
-alias p='sudo pacman'
+alias p='paru -S'
 alias pac='sudo pacman -S'
 alias pac-r='sudo pacman -Rcns'
 alias pac-s='sudo pacman -Ss'
 #alias Upgrade='sudo pacman -Syu'
-alias Update='sudo pacman -Syu'
-alias Sync='sudo pacman -Syy'
+alias Update='paru -Syu'
 alias pacLog='tail -f /var/log/pacman.log'
 alias Unlock='sudo rm /var/lib/pacman/db.lck'
 
@@ -198,10 +197,10 @@ done
 
 
 
-# export MANPATH="/usr/local/man:$MANPATH"
+ export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

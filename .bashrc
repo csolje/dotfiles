@@ -28,6 +28,14 @@ source $OSH/oh-my-bash.sh
 # Path
 export PATH=$PATH:~/bin:/home/chrs/.local/bin/
 
+# Functions
+wttr() {
+  local request="wttr.in/${1-Copenhagen}"
+  [ " $(tput cols)" -lt 125 ] && request+='?n'
+  curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
+}
+
+
 # Export settings
 export EDITOR="nvim"
 export PAGER="less"
