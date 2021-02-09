@@ -4,22 +4,22 @@ export ZSH="/home/chrs/.oh-my-zsh"
 #ZSH_THEME="Soliah"
 ZSH_THEME="juanghurtado"
 
-POWERLINE_RIGHT_A="date"
-POWERLINE_RIGHT_A="exit-status"
-POWERLINE_FULL_CURRENT_PATH="true"
-POWERLINE_SHOW_GIT_ON_RIGHT="true"
-POWERLINE_DETECT_SSH="true"
-POWERLINE_DATE_FORMAT="%D{%d-%m}"
-POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_DETECT_SSH="true"
-POWERLINE_GIT_CLEAN="✔"
-POWERLINE_GIT_DIRTY="✘"
-POWERLINE_GIT_ADDED="%F{green}✚%F{black}"
-POWERLINE_GIT_MODIFIED="%F{blue}✹%F{black}"
-POWERLINE_GIT_DELETED="%F{red}✖%F{black}"
-POWERLINE_GIT_UNTRACKED="%F{cyan}✭%F{black}"
-POWERLINE_GIT_RENAMED="➜"
-POWERLINE_GIT_UNMERGED="═"
+#POWERLINE_RIGHT_A="date"
+#POWERLINE_RIGHT_A="exit-status"
+#POWERLINE_FULL_CURRENT_PATH="true"
+#POWERLINE_SHOW_GIT_ON_RIGHT="true"
+#POWERLINE_DETECT_SSH="true"
+#POWERLINE_DATE_FORMAT="%D{%d-%m}"
+#POWERLINE_HIDE_HOST_NAME="true"
+#POWERLINE_DETECT_SSH="true"
+#POWERLINE_GIT_CLEAN="✔"
+#POWERLINE_GIT_DIRTY="✘"
+#POWERLINE_GIT_ADDED="%F{green}✚%F{black}"
+#POWERLINE_GIT_MODIFIED="%F{blue}✹%F{black}"
+#POWERLINE_GIT_DELETED="%F{red}✖%F{black}"
+#POWERLINE_GIT_UNTRACKED="%F{cyan}✭%F{black}"
+#POWERLINE_GIT_RENAMED="➜"
+#POWERLINE_GIT_UNMERGED="═"
 
 # The following lines were added by compinstall
 
@@ -200,7 +200,7 @@ done
  export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
- export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

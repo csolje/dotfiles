@@ -172,15 +172,15 @@ Xft.hintstyle: hintfull
 !URxvt.font:     xft:DejaVu Sans Mono:size=12:antialias=true
 !URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=12:antialias=true
 
-URxvt.font:     xft:bitstream vera sans mono:size=12:antialias=true
-URxvt.boldFont: xft:bitstream vera sans mono:bold:size=12:antialias=true
+URxvt.font:     xft:Mononoki Nerd Font:size=16:antialias=true
+URxvt.boldFont: xft:Mononoki Nerd Font:bold:size=16:antialias=true
 URxvt.letterSpace: -1
 
 URxvt*geometry:         112x28
 URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
 URxvt*perl-ext-common:  default,matcher,font-size
-URxvt*urlLauncher:      chromium
+URxvt*urlLauncher:      firefox
 URxvt*matcher.button:   1
 URxvt.intensityStyles:  false
 
@@ -203,7 +203,7 @@ URxvt*scrollTtyKeypress:    true
 
 URxvt.depth:                    32
 URxvt.background:               [80]#1B1B1B
-URxvt.imLocale:                 en_DK.utf8
+!URxvt.imLocale:                 en_US.UTF-8
 URxvt*locale:                   true
 
 URxvt.urgentOnBell:URxvttrue

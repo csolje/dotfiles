@@ -18,7 +18,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
-font ttf-font-awesome:  pango:Mononoki Nerd Font 12
+font xft:Mononoki Nerd Font 10, FontAwesome 12
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -36,7 +36,7 @@ font ttf-font-awesome:  pango:Mononoki Nerd Font 12
 #bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+#floating_modifier $mod
 
 
 # Disactive Focus follows mouse
@@ -52,9 +52,11 @@ bindsym $mod+Shift+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'bitstream vera sans mono:size=10'"
-bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'bitstream vera sans mono 10'
+bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Mononoki Nerd Font:size=12'"
+bindsym $mod+d exec "rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'bitstream vera sans mono 10'"
+#bindsym $mod+d exec --no-startup-id "sh ~/.config/i3/rofi"; exec notify-send rofi
 #bindsym $mod+d exec dmenu_run
+bindsym $mod+x exec rofi -show drun
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -67,11 +69,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+## alternatively, you can use the cursor keys:
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -79,11 +81,11 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+## alternatively, you can use the cursor keys:
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
 
 # split orientation
 bindsym $mod+z split h;exec notify-send 'tile horizontally'
@@ -189,51 +191,50 @@ bindsym $mod+r mode "resize"
 #	tray_output primary
 #}
 
-#bar {
-##    font pango:DejaVu Sans Mono 10, Icons 10
-#    position top
-#  	    tray_output primary
-#    status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
-#    colors {
-#        separator #666666
-#        background #222222
-#        statusline #dddddd
-#        focused_workspace #0088CC #0088CC #ffffff
-#        active_workspace #333333 #333333 #ffffff
-#        inactive_workspace #333333 #333333 #888888
-#        urgent_workspace #2f343a #900000 #ffffff
-#    }
-#}
 bar {
-    i3bar_command i3bar
-    status_command py3status -c ~/.config/i3/i3status.conf
+    font xft:Mononoki Nerd Font 10, FontAwesome 12
     position top
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary
-   tray_output primary
+    tray_output primary
+    status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
+    colors {
+        separator #666666
+        background #282c34
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+#bar {
+#    status_command --verbose py3status --config ~/.config/i3/i3status.conf
+#    position top
+# please set your primary output first. Example: 'xrandr --output eDP1 --primary
+#   tray_output primary
 # output eDP1
 
 # bindsym button4 nop bindsym button5 nop
 #font xft:Mononoki Nerd Font 10, FontAwesome 12
-font xft:URWGothic-Book 11, Font Awesome 5 Free 11
+
 # strip_workspace_numbers yes
-    colors {
-        background #282c34
-        statusline #F9FAF9
-        separator  #454947
-
-        focused_workspace  #F9FAF9 $acolor #F9FAF9
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #283339 #EEE8D5
-        binding_mode       $acolor #2C2C2C #F9FAF9
-        urgent_workspace   $acolor #FDF6E3 #E5201D
-        }
-
-    }
+#    colors {
+#        background #282c34
+#        statusline #F9FAF9
+#        separator  #454947
+#
+#       focused_workspace  #F9FAF9 #285577 #F9FAF9
+#       active_workspace   #595B5B #353836 #FDF6E3
+#       inactive_workspace #595B5B #283339 #EEE8D5
+#       binding_mode       #2F343A #2C2C2C #F9FAF9
+#       urgent_workspace   #2F343A #FDF6E3 #E5201D
+#    }
+#
+#}
 # Launches browsers
 mode "browser" {
-    bindsym --release f exec firefox; mode "default"
-    bindsym --release b exec brave; mode "default"
-    bindsym --release q exec qutebrowser; mode "default"
+    bindsym f exec firefox; mode "default"
+    bindsym b exec brave; mode "default"
+    bindsym q exec qutebrowser; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -313,12 +314,11 @@ bindsym $mod+i [class="TelegramDesktop$"] scratchpad show resize set 800 550
 
 # Set shutdown, restart and locking
 bindsym $mod+Shift+Ctrl+0 mode "$mod_system"
-set $mod_system (l)ock, (e)xit, switch_(u)ser, (Shift+s)uspend, (s)uspend+lock, (h)ibernate, (Shift+h)ibernate+lock, (r)eboot, shut(d)own
+set $mod_system (l)ock, (e)xit, (Shift+s)uspend, (s)uspend+lock, (h)ibernate, (Shift+h)ibernate+lock, (r)eboot, shut(d)own
 mode "$mod_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym Shift+s exec --no-startup-id i3exit suspend, mode "default"
     bindsym s exec --no-startup-id "i3exit lock; i3exit suspend", mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym Shift+h exec --no-startup-id "i3exit lock; i3exit hibernate", mode "default"

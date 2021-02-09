@@ -1,48 +1,54 @@
-theme = "solarized-dark"
+theme="bad-wolf"
 
-idle_bg = "#002b42"
-idle_fg = "#93a1a1"
-info_bg = "#268bd2"
-info_fg = "#002b36"
-good_bg = "#859900"
-good_fg = "#002b36"
-warning_bg = "#b58900"
-warning_fg = "#002b36"
-critical_bg = "#dc322f"
-critical_fg = "#002b36"
-separator = "\ue0b2"
-separator_bg = "auto"
-separator_fg = "auto"
-alternating_tint_bg = "#000000"
+#idle_bg = "#282c34"
+#idle_fg = "#93a1a1"
+#info_bg = "#282c34"
+#info_fg = "#002b36"
+#good_bg = "#282c34"
+#good_fg = "#002b36"
+#warning_bg = "#b58900"
+#warning_fg = "#002b36"
+#critical_bg = "#dc322f"
+#critical_fg = "#002b36"
+#separator = "\ue0b2"
+#separator_bg = "auto"
+#separator_fg = "auto"
+#alternating_tint_bg = "#282c34"
 
 [icons]
 name = "awesome"
 
 [[block]]
-block = "battery"
-interval = 10
-format = "{percentage}% {time}"
+block = "music"
+player = "spotify"
+buttons = ["play", "next"]
 
 [[block]]
-block = "networkmanager"
-primary_only = true
-device_format = "{icon}{ap} {ips}"
-on_click = "alacritty -e nmtui"
+block = "net"
+device = "enp0s31f6"
+format = "{ip} {speed_up} {speed_down}"
+hide_inactive = true
 
 [[block]]
-block = "speedtest"
-bytes = true
-interval = 1800
+block = "net"
+device = "wlp1s0"
+format = "{ip} ({signal_strength} on {ssid}) {speed_up} {speed_down}"
+hide_inactive = true
+
+#[[block]]
+#block = "networkmanager"
+#primary_only = true
+#device_format = "{icon}{ap} {ips}"
+#on_click = "alacritty -e nmtui"
+
+#[[block]]
+#block = "speedtest"
+#bytes = true
+#interval = 1800
+
 
 [[block]]
-block = "disk_space"
-path = "/"
-alias = "/"
-info_type = "available"
-unit = "GB"
-interval = 20
-warning = 20.0
-alert = 10.0
+block = "sound"
 
 [[block]]
 block = "memory"
@@ -51,14 +57,11 @@ format_mem = "{Mup}%"
 format_swap = "{SUp}%"
 
 [[block]]
-block = "load"
-interval = 1
-format = "{1m} {5m}"
-
-[[block]]
-block = "sound"
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
 
 [[block]]
 block = "time"
-interval = 60
-format = "%a %d/%m %R"
+#interval = 60
+format = "%I:%M %p %Y-%m-%d"
