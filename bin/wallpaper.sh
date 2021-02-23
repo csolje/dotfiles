@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-scale --randomize ~/Pictures/wallpaper/
+feh --recursive --bg-fill --randomize ~/Pictures/wallpaper/
