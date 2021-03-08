@@ -184,8 +184,8 @@ vnoremap K :m '<-2<CR>gv=gv
 vnoremap X "_d
 
 " space-1 insert "!" commenting
-nnoremap <leader>1 :norm 0i!<cr>
-vnoremap <leader>1 :norm 0i!<cr>
+nnoremap <leader>1 :norm 0i!!<cr>
+vnoremap <leader>1 :norm 0i!!<cr>
 
 " space-' insert """ commenting
 nnoremap <leader>' :norm 0i"<cr>
