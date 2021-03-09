@@ -138,4 +138,4 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?q={}', 'gh': 'https://github.com/search?q={}'}
