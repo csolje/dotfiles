@@ -145,12 +145,19 @@ bar {
         separator #666666
         background #282c34
         statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
+        focused_workspace  #F9FAF9 #285577 #F9FAF9
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #283339 #EEE8D5
+        binding_mode       #2F343A #2C2C2C #F9FAF9
+        urgent_workspace   #2F343A #FDF6E3 #E5201D
+
+#        focused_workspace #0088CC #0088CC #ffffff
+#        active_workspace #333333 #333333 #ffffff
+#        inactive_workspace #333333 #333333 #888888
+#        urgent_workspace #2f343a #900000 #ffffff
    }
 }
+
 # py3status bar
 #bar {
 #    status_command py3status --config ~/.config/i3/i3status.conf
