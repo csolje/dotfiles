@@ -1,3 +1,6 @@
+env:
+  TERM: xterm-256color
+
 # Colors (One Darker)
 colors:
   # Default colors
@@ -27,7 +30,7 @@ colors:
     cyan: "#56b6c2"
     white: "#ffffff"
 
-background_opacity: 0.99
+background_opacity: 0.95
 
 font:
   normal:
@@ -47,6 +50,10 @@ font:
   size: 12.0
 
   offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
     x: 0
     y: 0
 
@@ -77,7 +84,6 @@ selection:
 
 # Live config reload (changes require restart)
 live_config_reload: true
-
 #key_bindings:
 #  - { key: V, mods: Control|Shift, action: Paste }
 #  - { key: C, mods: Control|Shift, action: Copy }

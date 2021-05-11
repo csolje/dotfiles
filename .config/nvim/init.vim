@@ -36,7 +36,10 @@ Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'sheerun/vim-polyglot'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -121,9 +124,12 @@ endif
 let loaded_matchparen = 1
 let mapleader = " "
 
-let g:netrw_browse_split = 2
+let g:netrw_browse_split = 4
 let g:netrw_banner = 0
-let g:netrw_winsize = 25
+let g:netrw_altv = 1
+let g:netrw_list = 3
+let g:netrw_winsize = 15
+
 
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'

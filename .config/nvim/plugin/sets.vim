@@ -38,7 +38,7 @@ set nobackup
 set nowritebackup
 
 " Set the undo directory and undofile
-set undodir=~/.vim/undodir
+set undodir=~/.config/nvim/undodir
 set undofile
 
 if exists('$SHELL')

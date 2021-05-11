@@ -15,7 +15,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty 
 bindsym $mod+Ctrl+Return exec st
 bindsym $mod+Shift+Return exec kitty
 #bindsym $mod+Shift+Return exec i3-sensible-terminal
@@ -56,7 +56,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Shitf+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -188,6 +188,7 @@ mode "browser" {
     bindsym f exec firefox; mode "default"
     bindsym b exec brave; mode "default"
     bindsym q exec qutebrowser; mode "default"
+    bindsym c exec chromium; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -199,7 +200,7 @@ bindsym XF86MonBrightnessUp exec "/usr/bin/brightnessctl s 10%+"
 bindsym XF86MonBrightnessDown exec "/usr/bin/brightnessctl s 10%-"
 
 # Lockscreen
-bindsym $mod+Ctrl+l exec "/usr/bin/betterlockscreen_rapid 10 10"
+bindsym $mod+Ctrl+l exec "/usr/bin/betterlockscreen_rapid 20 20"
 
 # Autostart
 exec --no-startup-id "setxkbmap -option caps:swapescape"
@@ -211,8 +212,9 @@ exec --no-startup-id "dunst"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id "xmodmap ~/.Xmodmapus"
 exec --no-startup-id "feh --bg-scale `find ~/Pictures/wallpaper/* | sort -R | tail -1` --bg-scale  `find ~/Pictures/wallpaper/* | sort -R | tail -1`"
-exec --no-startup-id "xautolock -time 10 -locker 'betterlockscreen_rapid 10 10'"
+exec --no-startup-id "xautolock -time 10 -locker 'betterlockscreen_rapid 20 20'"
 exec --no-startup-id "flameshot"
+exec --no-startup-id "xset +dpms"
 
 # Pomotroid in scratchpad
 for_window [class="pomotroid"] sticky enable border none
@@ -242,9 +244,9 @@ bindsym $mod+y [class="^Slack$"], scratchpad show
 
 # Teams in scratchpad
 for_window [title="Microsoft Teams$"] move to scratchpad
-exec --no-startup-id teams
+exec --no-startup-id teams-insiders
 bindsym $mod+t [title="Microsoft Teams$"], scratchpad show
-for_window [title="Microsoft Teams Notification"] floating enable
+for_window [title="Microsoft Teams$"] floating enable
 
 # Bitwarden in scratchpad
 for_window [class="Bitwarden"] sticky enable border none
@@ -264,7 +266,14 @@ for_window [class="TelegramDesktop$"] move to scratchpad
 exec --no-startup-id telegram-desktop
 bindsym $mod+i [class="TelegramDesktop$"] scratchpad show resize set 800 550
 for_window [class="TelegramDesktop$"] floating enable
-  
+
+# Discord
+for_window [class="discord"] move to scratchpad
+exec --no-startup-id discord
+bindsym $mod+g [class="discord"], scratchpad show
+for_window [class="discord"] floating enable
+
+
 # Signal
 for_window [class="Signal"] sticky enable border none
 for_window [class="Signal"] move to scratchpad

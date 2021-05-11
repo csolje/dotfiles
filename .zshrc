@@ -2,8 +2,12 @@
 export ZSH="/home/chrs/.oh-my-zsh"
 
 #ZSH_THEME="Soliah"
-ZSH_THEME="juanghurtado"
+#ZSH_THEME="juanghurtado"
+#ZSH_THEME="amuse"
+#ZSH_THEME="bira"
+ZSH_THEME="lambda-mod"
 
+# Powerline modifications
 #POWERLINE_RIGHT_A="date"
 #POWERLINE_RIGHT_A="exit-status"
 #POWERLINE_FULL_CURRENT_PATH="true"
@@ -30,7 +34,7 @@ zstyle ':completion:*' menu select=1
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' special-dirs true
-zstyle :compinstall filename '/home/chrs/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -51,7 +55,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 # User configuration
 
-export PATH="/home/chrs/bin:/home/chrs/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Export settings
@@ -98,6 +102,8 @@ alias mount_nas='sh ~/bin/mount_nas.sh'
 alias umount_nas='sh ~/bin/umount_nas.sh'
 alias getexternalip='sh ~/bin/externalip.sh'
 alias externalip='w3m -dump whatismyip.akamai.com'
+alias screen_saving_on='xset +dpms'
+alias screen_saving_off='xset -dpms'
 
 # Dotfiles handeling
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -185,6 +191,10 @@ fi
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
 plugins=(git git-extras aws archlinux ansible branch vi-mode npm node nmap themes colorize sudo tmux)
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -217,3 +227,5 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias luamake=/home/chrs/GitHub/lua-language-server/3rd/luamake/luamake
