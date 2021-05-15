@@ -50,11 +50,11 @@ hide_inactive = true
 [[block]]
 block = "sound"
 
-[[block]]
-block = "memory"
-display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+#[[block]]
+#block = "memory"
+#display_type = "memory"
+#format_mem = "{Mup}%"
+#format_swap = "{SUp}%"
 
 [[block]]
 block = "battery"

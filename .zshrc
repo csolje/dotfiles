@@ -115,11 +115,11 @@ alias v='nvim'
 #alias vi='nvim'
 #alias vV='vim ~/.vimrc'
 alias vV='nvim ~/.config/nvim/init.vim'
+alias cdn='cd ~/.config/nvim'
 
 ## Zsh Stuff
 alias vZ='nvim ~/.zshrc'
 alias reloadZ='source ~/.zshrc'
-alias reloadV='source ~/.config/nvim/init.vim'
 
 ## Bash Stuff
 alias vB='nvim ~/.bashrc'
