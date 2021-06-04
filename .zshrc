@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/chrs/.oh-my-zsh"
 
-#ZSH_THEME="Soliah"
+ZSH_THEME="Soliah"
 #ZSH_THEME="juanghurtado"
 #ZSH_THEME="amuse"
 #ZSH_THEME="bira"
-ZSH_THEME="lambda-mod"
+#ZSH_THEME="lambda-mod"
 
 # Powerline modifications
 #POWERLINE_RIGHT_A="date"
@@ -56,7 +56,7 @@ COMPLETION_WAITING_DOTS="true"
 # User configuration
 
 export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Export settings
@@ -91,7 +91,7 @@ alias code='code-insiders'
 alias cdc='cd ~/code'
 alias codeenv='sh ~/bin/tmux.sh'
 alias starwars='telnet towel.blinkenlights.nl'
-alias weather='curl wttr.in'
+alias weather='weatherfunc'
 alias wallpaper='sh ~/bin/wallpaper.sh'
 alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
 alias updateSSHShared='sh ~/bin/UpdateSSHShared.sh'
@@ -202,7 +202,14 @@ source $ZSH/oh-my-zsh.sh
 for al in ${${${(0)"$(git config -z --get-regexp '^alias.')"}%%$'\n'*}#alias.}; do
   alias g$al="git $al"
 done
-
+function weatherfunc() {
+    if [[ -z "$1" ]]
+    then
+        curl wttr.in
+    else
+        curl wttr.in/$1
+    fi
+}
 
 
  export MANPATH="/usr/local/man:$MANPATH"

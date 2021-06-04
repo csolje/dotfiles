@@ -1,19 +1,19 @@
 theme="bad-wolf"
 
-#idle_bg = "#282c34"
-#idle_fg = "#93a1a1"
-#info_bg = "#282c34"
-#info_fg = "#002b36"
-#good_bg = "#282c34"
-#good_fg = "#002b36"
-#warning_bg = "#b58900"
-#warning_fg = "#002b36"
-#critical_bg = "#dc322f"
-#critical_fg = "#002b36"
-#separator = "\ue0b2"
-#separator_bg = "auto"
-#separator_fg = "auto"
-#alternating_tint_bg = "#282c34"
+idle_bg = "#282c34"
+idle_fg = "#93a1a1"
+info_bg = "#282c34"
+info_fg = "#002b36"
+good_bg = "#282c34"
+good_fg = "#002b36"
+warning_bg = "#b58900"
+warning_fg = "#002b36"
+critical_bg = "#dc322f"
+critical_fg = "#002b36"
+separator = "\ue0b2"
+separator_bg = "auto"
+separator_fg = "auto"
+alternating_tint_bg = "#282c34"
 
 [icons]
 name = "awesome"
@@ -59,7 +59,7 @@ block = "sound"
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}% {time}"
+format = "{percentage} {time}"
 
 [[block]]
 block = "time"
