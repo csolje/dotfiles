@@ -159,3 +159,5 @@ source <(kitty + complete setup bash)
 # source <(kubectl completion bash)
 # alias k8c='kubectl'
 # alias kctl='kubectl'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

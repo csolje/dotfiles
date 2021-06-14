@@ -7,44 +7,72 @@ ZSH_THEME="Soliah"
 #ZSH_THEME="bira"
 #ZSH_THEME="lambda-mod"
 
-# Powerline modifications
-#POWERLINE_RIGHT_A="date"
-#POWERLINE_RIGHT_A="exit-status"
-#POWERLINE_FULL_CURRENT_PATH="true"
-#POWERLINE_SHOW_GIT_ON_RIGHT="true"
-#POWERLINE_DETECT_SSH="true"
-#POWERLINE_DATE_FORMAT="%D{%d-%m}"
-#POWERLINE_HIDE_HOST_NAME="true"
-#POWERLINE_DETECT_SSH="true"
-#POWERLINE_GIT_CLEAN="✔"
-#POWERLINE_GIT_DIRTY="✘"
-#POWERLINE_GIT_ADDED="%F{green}✚%F{black}"
-#POWERLINE_GIT_MODIFIED="%F{blue}✹%F{black}"
-#POWERLINE_GIT_DELETED="%F{red}✖%F{black}"
-#POWERLINE_GIT_UNTRACKED="%F{cyan}✭%F{black}"
-#POWERLINE_GIT_RENAMED="➜"
-#POWERLINE_GIT_UNMERGED="═"
 
 # The following lines were added by compinstall
+autoload -U colors && colors  # Load colors
+setopt autocd # Automatically cd into typed directory.
+stty stop undef		# Disable ctrl-s to freeze terminal.
+setopt interactive_comments
 
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' special-dirs true
+#zstyle ':completion:*' list-colors ''
+#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
+zstyle ':completion:*' menu select #=1
+#zstyle ':completion:*' preserve-prefix '//[^/]##/'
+#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+#zstyle ':completion:*' special-dirs true
 zstyle :compinstall filename '$HOME/.zshrc'
+zmodload zsh/complist
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=9000
-SAVEHIST=9000
+_comp_options+=(globdots)		# Include hidden files.
+
+# History in cache directory:
+HISTFILE=~/.cache/zsh/history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# vi mode
 bindkey -v
-# End of lines configured by zsh-newuser-install
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape for different vi modes.
+#function zle-keymap-select () {
+#    case $KEYMAP in
+#        vicmd) echo -ne '\e[1 q';;      # block
+#        viins|main) echo -ne '\e[5 q';; # beam
+#    esac
+#}
+#zle -N zle-keymap-select
+#
+#zle-line-init() {
+#    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#    echo -ne "\e[5 q"
+#}
+#zle -N zle-line-init
+#echo -ne '\e[5 q' # Use beam shape cursor on startup.
+#preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+#
+# Use lf to switch directories and bind it to ctrl-o
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
+
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -190,7 +218,12 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
-plugins=(git git-extras aws archlinux ansible branch vi-mode npm node nmap themes colorize sudo tmux)
+plugins=(git git-extras aws archlinux ansible branch fzf vi-mode npm node nmap themes colorize sudo tmux)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFUALT_OPS="--extended"
+export FZF_BASE='/usr/bin/fzf'
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
@@ -237,3 +270,4 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias luamake=/home/chrs/GitHub/lua-language-server/3rd/luamake/luamake
+
