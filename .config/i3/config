@@ -14,6 +14,9 @@ floating_modifier $mod
 # Disactive Focus follows mouse
 focus_follows_mouse no
 
+# Deactive mouse follow active workspace
+mouse_warping none
+
 # start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+Ctrl+Return exec st
@@ -53,7 +56,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space exec "~/bin/tmux2"
+bindsym $mod+space exec tmux2
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
