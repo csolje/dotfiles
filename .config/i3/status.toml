@@ -1,4 +1,5 @@
-theme="bad-wolf"
+#theme="bad-wolf"
+theme="nord-dark"
 
 idle_bg = "#282c34"
 idle_fg = "#93a1a1"
@@ -16,7 +17,10 @@ separator_fg = "auto"
 alternating_tint_bg = "#282c34"
 
 [icons]
+#name = "awesome5"
 name = "awesome"
+#name = "material-nf"
+
 
 [[block]]
 block = "music"
