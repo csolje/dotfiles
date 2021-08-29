@@ -133,6 +133,9 @@ alias getexternalip='sh ~/bin/externalip.sh'
 alias externalip='w3m -dump whatismyip.akamai.com'
 alias screen_saving_on='xset +dpms'
 alias screen_saving_off='xset -dpms'
+alias home='autorandr -l home'
+alias work='autorandr -l work'
+alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
 
 # Dotfiles handeling
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -177,7 +180,6 @@ alias yt="youtube-dl --add-metadata -ic" # Downloads video link
 alias yta="youtube-dl --add-metadata -xic" # Downloads only audio
 
 ## Pacman
-alias y='yay'
 alias p='paru -S'
 alias pac='sudo pacman -S'
 alias pac-r='sudo pacman -Rcns'
