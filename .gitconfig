@@ -5,7 +5,7 @@
 	pager=less -x4
 
 [user]
-	email = christian.solje@aller.com
+	email = csolje@gmail.com
 	name = Christian Solje
 [pull]
 	rebase = false
