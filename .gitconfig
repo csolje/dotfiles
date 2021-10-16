@@ -159,7 +159,7 @@
     # }}}
     wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
 [credential]
-	helper = !aws codecommit credential-helper $@
+    helper = !aws codecommit credential-helper --profile=main-account $@
 	UseHttpPath = true
 [init]
 	defaultBranch = main
