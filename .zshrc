@@ -213,10 +213,11 @@ xmodmap ~/.Xmodmapus
 # SSH-agent
 if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
   eval `ssh-agent -s` > /dev/null
-  ssh-add -q ~/.ssh/*.pem
+#  ssh-add -q ~/.ssh/*.pem
   ssh-add -q ~/.ssh/id_rsa
 fi
 
+export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
@@ -245,9 +246,9 @@ function weatherfunc() {
         curl wttr.in/$1
     fi
 }
+. ~/bin/z.sh
 
-
- export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8

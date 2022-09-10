@@ -150,7 +150,7 @@ export GDM_LANG=en_US.UTF-8
 # SSH-agent
 if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
   eval `ssh-agent -s` > /dev/null
-  ssh-add -q ~/.ssh/*.pem
+#  ssh-add -q ~/.ssh/*.pem
   ssh-add -q ~/.ssh/id_rsa
 fi
 
