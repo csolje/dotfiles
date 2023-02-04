@@ -1,14 +1,16 @@
 [core]
-	editor = nvim
-	excludesfile = /Users/csolje/.gitignore_global
-	autocrlf = input
-	pager=less -x4
+#    editor = /usr/bin/nvim
+    editor = /usr/local/bin/nvim
+    excludesfile = /home/chrs/.gitignore_global
+    autocrlf = input
+    pager=less -x4
 
 [user]
-	email = csolje@gmail.com
-	name = Christian Solje
-[pull]
-	rebase = false
+    name = Christian Solje
+    email = csolje@gmail.com
+
+[include]
+    path = ~/.git-sendemail
 
 [color]
     ui = true
@@ -43,15 +45,17 @@
     ci = commit
     ac = "!git add -A && git commit"
     co = checkout
+    br = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
     sw = switch
-    br = branch
     r = reset
     cp = cherry-pick
     gr = grep -Ii
+    nb = "checkout -b"
+
 
     # tweak defaults
     diff = diff --word-diff
-    branch = branch -ra
+#    branch = branch -ra
     grep = grep -Ii
     bra = branch -ra
     ai = add --interactive
@@ -75,7 +79,10 @@
     # log commands
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-  	logg = log --graph --decorate --oneline --abbrev-commit --all
+    logg = log --pretty=format:"\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\"" --graph --date=relative --decorate --all
+    hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+	llog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    lc  = "!f() { git ll "$1"^.."$1"; }; f"
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
     fl = log -u
     filelog = log -u
@@ -83,6 +90,7 @@
     # diff
     d = diff --word-diff
     dc = diff --cached
+    dv = difftool -t vimdiff -y
     # diff last commit
     dlc = diff --cached HEAD^
     dr  = "!f() { git diff -w "$1"^.."$1"; }; f"
@@ -115,7 +123,7 @@
     assumeall = "!git status -s | awk {'print $2'} | xargs git assume"
 
     # subtree
-    #   add
+    # add
     sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
     #   update/pull
     sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
@@ -129,8 +137,6 @@
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
-    # Search for a branch
-    which = "!git branch | grep -i"
     #list remotes
     rem="!git config -l | grep remote.*url | tail -n +2"
 
@@ -153,19 +159,18 @@
     gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
     #rename branch tree to done-
     done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+    #add bitbucket remote
+    ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
     # worktree list
     wl = worktree list
     # undo from here http://megakemp.com/2016/08/25/git-undo/
     undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
 
-    wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
-[credential]
-    helper = !aws codecommit credential-helper --profile=main-account $@
-	UseHttpPath = true
-[init]
-	defaultBranch = main
+[rerere]
+    enabled = false
+[rebase]
+    autosquash = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
