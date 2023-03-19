@@ -14,13 +14,13 @@ setopt autocd # Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
-#zstyle ':completion:*' list-colors ''
-#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
 zstyle ':completion:*' menu select #=1
-#zstyle ':completion:*' preserve-prefix '//[^/]##/'
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' special-dirs true
 zstyle :compinstall filename '$HOME/.zshrc'
 zmodload zsh/complist
 
@@ -35,6 +35,7 @@ SAVEHIST=10000
 
 # vi mode
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
@@ -111,14 +112,15 @@ for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 ## Alias
 #alias vi='/usr/bin/vim'
 alias vi='nvim'
-alias ls='ls'
 alias la='ls -lhtra'
 alias ls='ls --color=auto'
+alias lla='exa --header --git --icons --long --all --sort type'
 alias git='noglob git'
 alias code='code-insiders'
+alias cat='bat'
 alias cdc='cd ~/code'
 alias codeenv='sh ~/bin/tmux.sh'
-alias starwars='telnet towel.blinkenlights.nl'
+##alias starwars='telnet towel.blinkenlights.nl'
 alias weather='weatherfunc'
 alias wallpaper='sh ~/bin/wallpaper.sh'
 alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
@@ -129,7 +131,6 @@ alias awslogin='sh ~/bin/awslogin.sh'
 alias fix_keyboard='sh ~/bin/keyboard.sh'
 alias mount_nas='sh ~/bin/mount_nas.sh'
 alias umount_nas='sh ~/bin/umount_nas.sh'
-alias getexternalip='sh ~/bin/externalip.sh'
 alias externalip='w3m -dump whatismyip.akamai.com'
 alias screen_saving_on='xset +dpms'
 alias screen_saving_off='xset -dpms'
@@ -144,9 +145,9 @@ config config status.showUntrakedFiles no
 ## Vim stuff
 alias vim='nvim'
 alias v='nvim'
-#alias vi='nvim'
+alias vi='nvim'
 #alias vV='vim ~/.vimrc'
-alias vV='nvim ~/.config/nvim/init.vim'
+alias vV='nvim ~/.config/nvim/init.lua'
 alias cdn='cd ~/.config/nvim'
 
 ## Zsh Stuff
@@ -157,11 +158,19 @@ alias reloadZ='source ~/.zshrc'
 alias vB='nvim ~/.bashrc'
 alias vP='nvim ~/.bash_profile'
 
-## Configurations
+## Configurations i3wm
 alias vi3C='nvim ~/.config/i3/config'
 alias vi3S='nvim ~/.config/i3/i3status.conf'
 #alias vi3S='vim ~/.config/i3/status.toml'
-alias gitconfig='nvim ~/.gitconfig'
+## Configurations Xmonad
+alias vxC='nvim ~/.xmonad/xmonad.hs'
+alias vxB='nvim ~/.config/xmobar/xmobarrc'
+
+## Git stuff
+alias vgC='nvim ~/.gitconfig'
+alias g='git'
+alias gsh='git push'
+alias gll='git pull'
 
 ## SSH alias
 alias vsC='nvim ~/.ssh/config'
@@ -221,11 +230,11 @@ export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
-plugins=(git git-extras aws archlinux ansible branch fzf vi-mode npm node nmap themes colorize sudo tmux)
+plugins=(git aws archlinux branch fzf vi-mode npm node nmap themes colorize sudo tmux)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFUALT_OPS="--extended"
 export FZF_BASE='/usr/bin/fzf'
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fd --type f --type d --type l'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -235,9 +244,9 @@ autoload -Uz compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-for al in ${${${(0)"$(git config -z --get-regexp '^alias.')"}%%$'\n'*}#alias.}; do
-  alias g$al="git $al"
-done
+#for al in ${${${(0)"$(git config -z --get-regexp '^alias.')"}%%$'\n'*}#alias.}; do
+#  alias g$al="git $al"
+#done
 function weatherfunc() {
     if [[ -z "$1" ]]
     then
@@ -257,7 +266,7 @@ export LANG=en_US.UTF-8
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -271,6 +280,3 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias luamake=/home/chrs/GitHub/lua-language-server/3rd/luamake/luamake
-

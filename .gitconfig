@@ -1,6 +1,6 @@
 [core]
-    editor = /usr/bin/nvim
-#    editor = /usr/local/bin/nvim
+#    editor = /usr/bin/nvim
+    editor = /usr/local/bin/nvim
     excludesfile = /home/chrs/.gitignore_global
     autocrlf = input
     pager=less -x4

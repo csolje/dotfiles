@@ -10,8 +10,13 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+# Key bindings
+config.bind('J', 'tab-prev')
+config.bind('K', 'tab-next')
+config.bind('t', 'open -t')
+
 # Change the argument to True to still load settings configured via autoconfig.yml
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
@@ -48,11 +53,11 @@ config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 config.set('content.cookies.accept', 'all', 'devtools://*')
 
 # User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
+# `{os_info}`: Something like 'X11; Linux x86_64'. * `{webkit_version}`:
 # The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
+# QtWebEngine). * `{qt_key}`: 'Qt' for QtWebKit, 'QtWebEngine' for
 # QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
+# `{upstream_browser_key}`: 'Version' for QtWebKit, 'Chrome' for
 # QtWebEngine. * `{upstream_browser_version}`: The corresponding
 # Safari/Chrome version. * `{qutebrowser_version}`: The currently
 # running qutebrowser version.  The default value is equal to the
@@ -64,11 +69,11 @@ config.set('content.cookies.accept', 'all', 'devtools://*')
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
 
 # User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
+# `{os_info}`: Something like 'X11; Linux x86_64'. * `{webkit_version}`:
 # The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
+# QtWebEngine). * `{qt_key}`: 'Qt' for QtWebKit, 'QtWebEngine' for
 # QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
+# `{upstream_browser_key}`: 'Version' for QtWebKit, 'Chrome' for
 # QtWebEngine. * `{upstream_browser_version}`: The corresponding
 # Safari/Chrome version. * `{qutebrowser_version}`: The currently
 # running qutebrowser version.  The default value is equal to the
@@ -80,11 +85,11 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{w
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version} Edg/{upstream_browser_version}', 'https://accounts.google.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
+# `{os_info}`: Something like 'X11; Linux x86_64'. * `{webkit_version}`:
 # The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
+# QtWebEngine). * `{qt_key}`: 'Qt' for QtWebKit, 'QtWebEngine' for
 # QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
+# `{upstream_browser_key}`: 'Version' for QtWebKit, 'Chrome' for
 # QtWebEngine. * `{upstream_browser_version}`: The corresponding
 # Safari/Chrome version. * `{qutebrowser_version}`: The currently
 # running qutebrowser version.  The default value is equal to the
@@ -138,4 +143,4 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?q={}', 'gh': 'https://github.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'awm': 'https://man.archlinux.org/search?q={}', 'cg': 'https://www.coingecko.com/en/search?query={}', 'cp': 'https://coinpaprika.com/search/?q={}', 'dbatoolsdocs': 'https://docs.dbatools.io/#{}', 'g': 'https://www.google.com/search?hl=en&q={}', 'gh': 'https://github.com/search?q={}&ref=opensearch', 'gw': 'https://wiki.gentoo.org/?search={}', 'opw': 'https://openwrt.org/doku.php?do=search&id={}', 'yt': 'https://www.youtube.com/results?search_query={}&utm_source=opensearch', 'ytm': 'https://music.youtube.com/search?q={}&utm_source=opensearch', 'zt': 'https://zoro.to/search?keyword={}'}
