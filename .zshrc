@@ -1,37 +1,37 @@
-# Path to your oh-my-zsh installation.
-export ZSH="/home/chrs/.oh-my-zsh"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-#ZSH_THEME="Soliah"
-ZSH_THEME="juanghurtado"
-#ZSH_THEME="amuse"
-#ZSH_THEME="bira"
-#ZSH_THEME="lambda-mod"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# The following lines were added by compinstall
 # The following lines were added by compinstall
 autoload -U colors && colors  # Load colors
 setopt autocd # Automatically cd into typed directory.
-stty stop undef		# Disable ctrl-s to freeze terminal.
+#stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
-zstyle ':completion:*' menu select #=1
+zstyle ':completion:*' menu select=1
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' special-dirs true
 zstyle :compinstall filename '$HOME/.zshrc'
-zmodload zsh/complist
 
-autoload -Uz compinit
-compinit
-_comp_options+=(globdots)		# Include hidden files.
-
-# History in cache directory:
-HISTFILE=~/.cache/zsh/history
-HISTSIZE=10000
-SAVEHIST=10000
+autoload -Uz compinit && compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=9000
+SAVEHIST=9000
 
 # vi mode
 bindkey -v
@@ -39,29 +39,12 @@ bindkey '^R' history-incremental-search-backward
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+#bindkey -M menuselect 'h' vi-backward-char
+#bindkey -M menuselect 'k' vi-up-line-or-history
+#bindkey -M menuselect 'l' vi-forward-char
+#bindkey -M menuselect 'j' vi-down-line-or-history
+#bindkey -v '^?' backward-delete-char
 
-# Change cursor shape for different vi modes.
-#function zle-keymap-select () {
-#    case $KEYMAP in
-#        vicmd) echo -ne '\e[1 q';;      # block
-#        viins|main) echo -ne '\e[5 q';; # beam
-#    esac
-#}
-#zle -N zle-keymap-select
-#
-#zle-line-init() {
-#    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#    echo -ne "\e[5 q"
-#}
-#zle -N zle-line-init
-#echo -ne '\e[5 q' # Use beam shape cursor on startup.
-#preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-#
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
@@ -213,7 +196,8 @@ alias ryper='ssh -fNR 7777:localhost:22 tunnel@ryper.org'
 
 ## Tmux and Byobu
 alias tnew='tmux new -s'
-alias tattach='tmux a -t'
+alias tath='tmux a -t'
+alias vT='vim ~/.tmux.conf'
 alias b='byobu'
 
 # Ensure DK modifiers
@@ -241,7 +225,6 @@ zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 
 autoload -Uz compinit && compinit
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #for al in ${${${(0)"$(git config -z --get-regexp '^alias.')"}%%$'\n'*}#alias.}; do

@@ -23,7 +23,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = csoljeGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
