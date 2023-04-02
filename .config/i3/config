@@ -285,6 +285,7 @@ bindsym $mod+Ctrl+l exec --no-startup-id blurlock
 # Autostart applications
 #exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id xmodmap ~/.Xmodmapus
+exec --no-startup-id "xrandr --output eDP-1 --mode 1920x1080"
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id "feh --bg-scale `find ~/Pictures/wallpaper/* | sort -R | tail -1` --bg-scale  `find ~/Pictures/wallpaper/* | sort -R | tail -1`"
 exec --no-startup-id "flameshot"
