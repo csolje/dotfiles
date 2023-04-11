@@ -67,9 +67,6 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 # User configuration
 
-export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # Export settings
 export EDITOR="nvim"
@@ -95,9 +92,10 @@ for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 ## Alias
 #alias vi='/usr/bin/vim'
 alias vi='nvim'
-alias la='ls -lhtra'
+alias lla='ls -lhtra'
 alias ls='ls --color=auto'
-alias lla='exa --header --git --icons --long --all --sort type'
+alias ll='exa --header --icons --long --all --sort type'
+alias la='exa --header --git --icons --long --all --sort type'
 alias git='noglob git'
 alias code='code-insiders'
 alias cat='bat -p'
@@ -125,12 +123,13 @@ alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config status.showUntrakedFiles no
 
-## Vim stuff
+## editor stuff
 alias vim='nvim'
 alias v='nvim'
 alias vi='nvim'
 #alias vV='vim ~/.vimrc'
 alias vV='nvim ~/.config/nvim/init.lua'
+alias emacsc='emacsclient -c -a "emacs"'
 
 ## Zsh Stuff
 alias vZ='nvim ~/.zshrc'
@@ -219,7 +218,9 @@ if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
   ssh-add -q ~/.ssh/id_rsa
 fi
 
-export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
+export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin:~/.emacs.d/bin/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)

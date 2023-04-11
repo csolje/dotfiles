@@ -3,6 +3,8 @@
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 config.bind('t', 'open -t')
+config.bind(';j', 'hint links spawn --detech mpv {hint-url}')
+config.bind(';h', 'hint links spawn --detech streamlink -p mpv {hint-url} best')
 
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
