@@ -9,41 +9,32 @@ config.bind(';h', 'hint links spawn --detech streamlink -p mpv {hint-url} best')
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
-# Which cookies to accept. With QtWebEngine, this setting also controls
-# other features with tracking capabilities similar to those of cookies;
+# settings
 config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
-
-# Which cookies to accept. With QtWebEngine, this setting also controls
-# other features with tracking capabilities similar to those of cookies;
 config.set('content.cookies.accept', 'all', 'devtools://*')
 
 # User agent to send.  The following placeholders are defined:  *
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version} Edg/{upstream_browser_version}', 'https://accounts.google.com/*')
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
+config.set('colors.webpage.darkmode.enabled',True)
 
 # Load images automatically in web pages.
-# Type: Bool
 config.set('content.images', True, 'chrome-devtools://*')
 
 # Load images automatically in web pages.
-# Type: Bool
 config.set('content.images', True, 'devtools://*')
 
 # Enable JavaScript.
-# Type: Bool
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 
 # Enable JavaScript.
-# Type: Bool
 config.set('content.javascript.enabled', True, 'devtools://*')
 
 # Enable JavaScript.
-# Type: Bool
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 
 # Enable JavaScript.
-# Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
 # Search engines which can be used via the address bar.  Maps a search
