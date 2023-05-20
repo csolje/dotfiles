@@ -36,4 +36,15 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/csolje/packer.lua<CR>");
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/csolje/packer.lua<CR>")
+-- Comments
+vim.keymap.set("n", "<leader>!", "0i!<ESC>")
+vim.keymap.set("v", "<leader>!", "0i!<ESC>")
+vim.keymap.set("n", "<leader>'", "0i'<ESC>")
+vim.keymap.set("v", "<leader>'", "0i'<ESC>")
+vim.keymap.set("n", "<leader>-", "0i--<ESC>")
+vim.keymap.set("v", "<leader>-", "0i--<ESC>")
+vim.keymap.set("n", "<leader>#", "0i##<ESC>")
+vim.keymap.set("v", "<leader>#", "0i##<ESC>")
+vim.keymap.set("n", "<leader>6", "^x")
+vim.keymap.set("v", "<leader>6", "^x")
