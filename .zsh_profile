@@ -1,0 +1,31 @@
+#!/bin/zsh
+#
+# Profile file. Runs on login. Environment variables are set here
+#
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+VIM="nvim"
+unsetopt PROMPT_SP
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/fzf-extras.zsh
+
+# Default programs:
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export TERMINAL_PROG="alacritty"
+#export TERMINAL="st"
+#export TERMINAL_PROG="st"
+export GOPATH=$HOME/go
+export BROWSER="qutebrowser"
+export GIT_EDITOR=$VIM
+export DOTFILES=$HOME/.dotfiles
+
+# ~/ Clean-up:
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+
+# tmux-sessionizer
+bindkey -s ^f "tmux-sessionizer\n"
