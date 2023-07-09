@@ -1,14 +1,45 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/bin/z.sh
+source ~/.zsh_profile
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Export settings
+export EDITOR="nvim"
+export PAGER="less"
+export BROWSER="qutebrowser"
+export BROWSERCLI="w3m"
+export MOVPLAY="mpv"
+export PICVIEW="feh"
+export SNDPLAY="mpv"
+export PULSE_LATENCY_MSEC=60
+export COLORTERM="truecolor"
+export TERMINAL="alacritty"
+export TERM="xterm-256color"
+export WM="i3wm"
+
+# File Extensions
+for ext in html org php com net no;    do alias -s $ext=$BROWSER; done
+for ext in txt tex py PKGBUID;        do alias -s $ext=$EDITOR; done
+for ext in png jpg gif;            do alias -s $ext=$PICVIEW; done
+for ext in mpg wmv avi mkv;        do alias -s $ext=$MOVPLAY; done
+for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
+
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
+export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin:~/.emacs.d/bin/
+export FZF_DEFUALT_OPS="--extended"
+export FZF_BASE='/usr/bin/fzf'
+export FZF_DEFAULT_COMMAND='fd --type f --type d --type l'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fpath=(~/.zsh $fpath)
 
 # The following lines were added by compinstall
 # The following lines were added by compinstall
@@ -17,24 +48,25 @@ setopt autocd # Automatically cd into typed directory.
 #stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' special-dirs true
-zstyle :compinstall filename '$HOME/.zshrc'
-
-autoload -Uz compinit && compinit
+#zstyle ':completion:*' list-colors ''
+#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
+#zstyle ':completion:*' menu select=1
+#zstyle ':completion:*' preserve-prefix '//[^/]##/'
+#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+#zstyle ':completion:*' special-dirs true
+#zstyle :compinstall filename '$HOME/.zshrc'
+#
+#autoload -Uz compinit && compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.cache/histfile
 HISTSIZE=9000
 SAVEHIST=9000
 
 # vi mode
 bindkey -v
+zstyle ':autocomplete:*' default-context history-incremental-search-backward
 bindkey '^R' history-incremental-search-backward
 export KEYTIMEOUT=1
 
@@ -61,42 +93,19 @@ bindkey -s '^o' 'lfcd\n'
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
-# Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
 COMPLETION_WAITING_DOTS="true"
-# User configuration
-
-
-# Export settings
-export EDITOR="nvim"
-export PAGER="less"
-export BROWSER="qutebrowser"
-export BROWSERCLI="w3m"
-export MOVPLAY="mpv"
-export PICVIEW="feh"
-export SNDPLAY="mpv"
-export PULSE_LATENCY_MSEC=60
-export COLORTERM="truecolor"
-export TERMINAL="alacritty"
-export TERM="xterm-256color"
-export WM="i3wm"
-
-# File Extensions
-for ext in html org php com net no;    do alias -s $ext=$BROWSER; done
-for ext in txt tex py PKGBUID;        do alias -s $ext=$EDITOR; done
-for ext in png jpg gif;            do alias -s $ext=$PICVIEW; done
-for ext in mpg wmv avi mkv;        do alias -s $ext=$MOVPLAY; done
-for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 
 ## Alias
 #alias vi='/usr/bin/vim'
 alias vi='nvim'
 alias lla='ls -lhtra'
-#alias ls='ls --color=auto'
-alias ls='exa'
+alias ls='ls --color=auto'
+#alias ls='exa'
 alias ll='exa --header --icons --long --all --sort type'
-alias la='exa --header --git --icons --long --all --sort type'
+alias la='exa --header --icons --long --all --sort type'
+alias lg='exa --header --group --long --icons --all --git'
+alias l.="ls -A | egrep '^\.'"
+alias las='find . maxdepth 1 -type l -printf "%p -> %l\n" | sort'
 alias git='noglob git'
 alias code='code-insiders'
 alias cat='bat -p'
@@ -128,8 +137,6 @@ config config status.showUntrakedFiles no
 alias vim='nvim'
 alias v='nvim'
 alias vi='nvim'
-#alias vV='vim ~/.vimrc'
-alias vV='nvim ~/.config/nvim/init.lua'
 alias emacsc='emacsclient -c -a "emacs"'
 
 ## Zsh Stuff
@@ -158,12 +165,15 @@ alias ga='git add'
 alias gp='git push'
 alias gP='git pull'
 alias gc='git commit -m'
+
 ## coding folders
 alias cdc='cd ~/code'
 alias cdg='cd ~/git'
 alias cdd='cd ~/.dotfiles'
 alias cdn='cd ~/.config/nvim'
 alias devsql='sh ~/bin/devsql.sh'
+alias dev='sh ~/bin/dev.sh'
+
 ## SSH alias
 alias vsC='nvim ~/.ssh/config'
 alias vsK='nvim ~/.ssh/known_hosts'
@@ -186,7 +196,6 @@ alias pac='sudo pacman -S'
 alias pac-r='sudo pacman -Rcns'
 alias pac-s='sudo pacman -Ss'
 #alias Upgrade='sudo pacman -Syu'
-alias Update='paru -Syu'
 alias pacLog='tail -f /var/log/pacman.log'
 alias Unlock='sudo rm /var/lib/pacman/db.lck'
 
@@ -219,23 +228,6 @@ if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
   ssh-add -q ~/.ssh/id_rsa
 fi
 
-export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
-export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin:~/.emacs.d/bin/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=(git archlinux vi-mode themes tmux zsh-completions colorize)
-plugins=(git aws archlinux branch fzf vi-mode npm node nmap themes colorize sudo tmux)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFUALT_OPS="--extended"
-export FZF_BASE='/usr/bin/fzf'
-export FZF_DEFAULT_COMMAND='fd --type f --type d --type l'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-fpath=(~/.zsh $fpath)
-
-autoload -Uz compinit && compinit
 
 # User configuration
 #for al in ${${${(0)"$(git config -z --get-regexp '^alias.')"}%%$'\n'*}#alias.}; do
@@ -249,28 +241,11 @@ function weatherfunc() {
         curl wttr.in/$1
     fi
 }
-. ~/bin/z.sh
 
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
