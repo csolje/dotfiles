@@ -172,6 +172,7 @@ alias cdd='cd ~/.dotfiles'
 alias cdn='cd ~/.config/nvim'
 alias devsql='sh ~/bin/devsql.sh'
 alias dev='sh ~/bin/dev.sh'
+alias router='sh ~/bin/configrouter.sh'
 
 ## SSH alias
 alias vsC='nvim ~/.ssh/config'

@@ -329,7 +329,7 @@ bindsym $mod+y [class="^Slack$"], scratchpad show
 # Bitwarden in scratchpad
 for_window [class="Bitwarden"] sticky enable border none
 for_window [class="Bitwarden"] move to scratchpad
-exec --no-startup-id bitwarden
+exec --no-startup-id bitwarden-desktop
 bindsym $mod+o [class="Bitwarden"] scratchpad show resize set 800 550
 
 # 1Password in scratchpad
@@ -365,7 +365,7 @@ for_window [class="Signal"] floating enable
 # Surfshark
 for_window [class="Surfshark"] sticky enable border none
 for_window [class="Surfshark"] move to scratchpad
-exec --no-startup-id Surfshark
+exec --no-startup-id surfshark
 bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
 for_window [class="Surfshark"] floating enable
 
