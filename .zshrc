@@ -66,7 +66,7 @@ SAVEHIST=9000
 
 # vi mode
 bindkey -v
-zstyle ':autocomplete:*' default-context history-incremental-search-backward
+#zstyle ':autocomplete:*' default-context history-incremental-search-backward
 bindkey '^R' history-incremental-search-backward
 export KEYTIMEOUT=1
 
@@ -104,10 +104,9 @@ alias ls='ls --color=auto'
 alias ll='exa --header --icons --long --all --sort type'
 alias la='exa --header --icons --long --all --sort type'
 alias lg='exa --header --group --long --icons --all --git'
-alias l.="ls -A | egrep '^\.'"
+alias l.="ls -A | grep -E '^\.'"
 alias las='find . maxdepth 1 -type l -printf "%p -> %l\n" | sort'
 alias git='noglob git'
-alias code='code-insiders'
 alias cat='bat -p'
 alias catn='bat -n'
 alias codeenv='sh ~/bin/tmux.sh'
