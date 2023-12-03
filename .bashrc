@@ -161,3 +161,4 @@ source <(kitty + complete setup bash)
 # alias kctl='kubectl'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

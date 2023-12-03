@@ -339,35 +339,34 @@ exec --no-startup-id 1password
 bindsym $mod+p [class="1Password"] scratchpad show resize set 800 550
 
 # Telegram
-for_window [class="TelegramDesktop$"] sticky enable border none
-for_window [class="TelegramDesktop$"] move to scratchpad
-exec --no-startup-id telegram-desktop
-bindsym $mod+i [class="TelegramDesktop$"] scratchpad show resize set 1000 750
-for_window [class="TelegramDesktop$"] floating enable
+#for_window [class="TelegramDesktop$"] sticky enable border none
+#for_window [class="TelegramDesktop$"] move to scratchpad
+#exec --no-startup-id telegram-desktop
+#bindsym $mod+i [class="TelegramDesktop$"] scratchpad show resize set 1000 750
+#for_window [class="TelegramDesktop$"] floating enable
 
 # Discord
-for_window [class="discord"] move to scratchpad
-exec --no-startup-id discord
-bindsym $mod+g [class="discord"], scratchpad show
-for_window [class="discord"] floating enable
+#for_window [class="discord"] move to scratchpad
+#exec --no-startup-id discord
+#bindsym $mod+g [class="discord"], scratchpad show
+#for_window [class="discord"] floating enable
 
 # fh
-
 for_window [class="feh"] floating enable
 
 # Signal
-for_window [class="Signal"] sticky enable border none
-for_window [class="Signal"] move to scratchpad
-exec --no-startup-id signal-desktop
-bindsym $mod+Shift+i [class="Signal"] scratchpad show resize set 1000 750
-for_window [class="Signal"] floating enable
+#for_window [class="Signal"] sticky enable border none
+#for_window [class="Signal"] move to scratchpad
+#exec --no-startup-id signal-desktop
+#bindsym $mod+Shift+i [class="Signal"] scratchpad show resize set 1000 750
+#for_window [class="Signal"] floating enable
 
 # Surfshark
-for_window [class="Surfshark"] sticky enable border none
-for_window [class="Surfshark"] move to scratchpad
-exec --no-startup-id surfshark
-bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
-for_window [class="Surfshark"] floating enable
+#for_window [class="Surfshark"] sticky enable border none
+#for_window [class="Surfshark"] move to scratchpad
+#exec --no-startup-id surfshark
+#bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
+#for_window [class="Surfshark"] floating enable
 
 # Joplin
 for_window [class="^Joplin$"] move to scratchpad

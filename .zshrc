@@ -35,6 +35,7 @@ for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
 export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin:~/.emacs.d/bin/
+export PATH=$PATH:~/.cargo/bin
 export FZF_DEFUALT_OPS="--extended"
 export FZF_BASE='/usr/bin/fzf'
 export FZF_DEFAULT_COMMAND='fd --type f --type d --type l'
