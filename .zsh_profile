@@ -4,7 +4,6 @@
 #
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
-VIM="nvim"
 unsetopt PROMPT_SP
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
@@ -16,9 +15,27 @@ export TERMINAL="alacritty"
 export TERMINAL_PROG="alacritty"
 #export TERMINAL="st"
 #export TERMINAL_PROG="st"
+export TERM="xterm-256color"
+export WM="i3wm"
+export PAGER="less"
+export MOVPLAY="mpv"
+export PICVIEW="feh"
+export SNDPLAY="mpv"
+export PULSE_LATENCY_MSEC=60
+export COLORTERM="truecolor"
 export BROWSER="qutebrowser"
-export GIT_EDITOR=$VIM
+export BROWSERCLI="w3m"
+export GIT_EDITOR=$EDITOR
 export DOTFILES=$HOME/.dotfiles
+
+# Export settings
+
+# File Extensions
+for ext in html org php com net no;    do alias -s $ext=$BROWSER; done
+for ext in txt tex py PKGBUID;        do alias -s $ext=$EDITOR; done
+for ext in png jpg gif;            do alias -s $ext=$PICVIEW; done
+for ext in mpg wmv avi mkv;        do alias -s $ext=$MOVPLAY; done
+for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"

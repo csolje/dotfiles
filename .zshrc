@@ -11,26 +11,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Export settings
-export EDITOR="nvim"
-export PAGER="less"
-export BROWSER="qutebrowser"
-export BROWSERCLI="w3m"
-export MOVPLAY="mpv"
-export PICVIEW="feh"
-export SNDPLAY="mpv"
-export PULSE_LATENCY_MSEC=60
-export COLORTERM="truecolor"
-export TERMINAL="alacritty"
-export TERM="xterm-256color"
-export WM="i3wm"
-
-# File Extensions
-for ext in html org php com net no;    do alias -s $ext=$BROWSER; done
-for ext in txt tex py PKGBUID;        do alias -s $ext=$EDITOR; done
-for ext in png jpg gif;            do alias -s $ext=$PICVIEW; done
-for ext in mpg wmv avi mkv;        do alias -s $ext=$MOVPLAY; done
-for ext in wav mp3 ogg;            do alias -s $ext=$SNDPLAY; done
 
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
@@ -43,24 +23,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fpath=(~/.zsh $fpath)
 
 # The following lines were added by compinstall
-# The following lines were added by compinstall
 autoload -U colors && colors  # Load colors
 setopt autocd # Automatically cd into typed directory.
 #stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
-#zstyle ':completion:*' list-colors ''
-#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=** l:|=*'
-#zstyle ':completion:*' menu select=1
-#zstyle ':completion:*' preserve-prefix '//[^/]##/'
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' special-dirs true
-#zstyle :compinstall filename '$HOME/.zshrc'
-#
-#autoload -Uz compinit && compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/histfile
 HISTSIZE=9000
 SAVEHIST=9000
@@ -90,18 +57,14 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 
-
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
-
 COMPLETION_WAITING_DOTS="true"
 
 ## Alias
-#alias vi='/usr/bin/vim'
-alias vi='nvim'
 alias lla='ls -lhtra'
-alias ls='ls --color=auto'
-#alias ls='exa'
+##alias ls='ls --color=auto'
+alias ls='exa'
 alias ll='exa --header --icons --long --all --sort type'
 alias la='exa --header --icons --long --all --sort type'
 alias lg='exa --header --group --long --icons --all --git'
@@ -111,7 +74,6 @@ alias git='noglob git'
 alias cat='bat -p'
 alias catn='bat -n'
 alias codeenv='sh ~/bin/tmux.sh'
-##alias starwars='telnet towel.blinkenlights.nl'
 alias weather='weatherfunc'
 alias wallpaper='sh ~/bin/wallpaper.sh'
 alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
@@ -134,18 +96,19 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config status.showUntrakedFiles no
 
 ## editor stuff
-alias vim='nvim'
 alias v='nvim'
 alias vi='nvim'
+alias vim='nvim'
 alias emacsc='emacsclient -c -a "emacs"'
 
 ## Zsh Stuff
 alias vZ='nvim ~/.zshrc'
+alias vZP='nvim ~/.zshrc'
 alias reloadZ='source ~/.zshrc'
 
 ## Bash Stuff
 alias vB='nvim ~/.bashrc'
-alias vP='nvim ~/.bash_profile'
+alias vBP='nvim ~/.bash_profile'
 
 ## Configurations i3wm
 alias vi3C='nvim ~/.config/i3/config'
@@ -162,8 +125,8 @@ alias gsh='git push'
 alias gll='git pull'
 alias gst='git st'
 alias ga='git add'
-alias gp='git push'
-alias gP='git pull'
+alias gP='git push'
+alias gp='git pull'
 alias gc='git commit -m'
 
 ## coding folders
@@ -171,8 +134,9 @@ alias cdc='cd ~/code'
 alias cdg='cd ~/git'
 alias cdd='cd ~/.dotfiles'
 alias cdn='cd ~/.config/nvim'
-alias devsql='sh ~/bin/devsql.sh'
-alias dev='sh ~/bin/dev.sh'
+#alias dev='sh ~/bin/dev'
+#alias devcode='sh ~/bin/devcode'
+#alias devsql='sh ~/bin/devsql'
 alias router='sh ~/bin/configrouter.sh'
 
 ## SSH alias
