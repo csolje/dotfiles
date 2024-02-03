@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 PERSONAL_SESSION="vimdeathmatch"
-VWM="~/personal/vim-with-me/v3"
-TVUI="~/work/tvui"
-TVUI_AUTOMATION="~/work/tvui-automation"
+SQL="~/code/personal/SqlScripts"
+TVUI="~/work/sql"
+TVUI_AUTOMATION="~/work/sql-automation"
 MILO="~/work/milo"
-NRDP_BUILD="~/work/builds"
-NRDP="~/work/nrdp"
+WORK_BUILD="~/code/work/builds"
+NRDP="~/code/work/nrdp"
 
 createWindow() {
     session=$1
@@ -16,7 +16,7 @@ createWindow() {
     hasWindow=$(tmux list-windows -t $session | grep "$window")
     if [ -z "$hasWindow" ]; then
         cmd="tmux neww -t $session: -n $window -d"
-        if [ $# -gt 0 ]; then
+        if [ $# -gt 1 ]; then
             cmd="$cmd $@"
         fi
         echo "Creating Window(\"$hasWindow\"): $cmd"
@@ -41,33 +41,36 @@ while [ "$#" -gt 0 ]; do
 
     case "$curr" in
     "-m")
-        createSession aws primary
-        createWindow aws code
-        createWindow aws build
+        createSession code primary
+        createWindow code code
+        createWindow code build
         ;;
     "-n")
-        createSession tvui primary
-        version=$1
-        if [ -z $version ]; then
-            echo "-n should have the next argument contain a number"
-            exit 1
-        fi
-
-        shift
-        createWindow tvui build_nrdp -c $NRDP_BUILD/$version
-        createWindow tvui vim_nrdp -c $NRDP
+        eval cd $SQL
+        createSession sql primary
+        # This is used if you would like to have more options
+        #version=$1
+        #if [ -z $version ]; then
+        #    echo "-n should have the next argument contain a number"
+        #    exit 1
+        #fi
+        #shift
+        eval cd $WORK_BUILD
+        createWindow sql build_work
+        # Creates the window and runs a command
+        #createWindow sql vim_nrdp -c $NRDP
         ;;
 
     "-ta")
-        createSession tvui primary -c $TVUI_AUTOMATION
-        createWindow tvui tvui_automation -c $TVUI_AUTOMATION
-        createWindow tvui tvui_automation_vim -c $TVUI_AUTOMATION
+        createSession sql primary -c $TVUI_AUTOMATION
+        createWindow sql sql_automation -c $TVUI_AUTOMATION
+        createWindow sql sql_automation_vim -c $TVUI_AUTOMATION
         ;;
 
     "-t")
-        createSession tvui primary -c $TVUI
-        createWindow tvui tvui_server -c $TVUI "./tvui server"
-        createWindow tvui tvui_client -c $TVUI "./tvui client"
+        createSession sql primary -c $TVUI
+        createWindow sql sql_server -c $TVUI "./sql server"
+        createWindow sql sql_client -c $TVUI "./sql client"
         ;;
 
     "--vwm")
