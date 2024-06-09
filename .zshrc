@@ -1,26 +1,19 @@
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/bin/z.sh
-source ~/.zsh_profile
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+source ~/.zsh_profile
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/lib/snapd/snap/bin"
-export PATH=$PATH:~/.npm-global/bin:/usr/local/go/bin:~/.emacs.d/bin/
 export PATH=$PATH:~/.cargo/bin
-export FZF_DEFUALT_OPS="--extended"
-export FZF_BASE='/usr/bin/fzf'
-export FZF_DEFAULT_COMMAND='fd --type f --type d --type l'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fpath=(~/.zsh $fpath)
+fpath=(~/.config/zsh $fpath)
 
 # The following lines were added by compinstall
 autoload -U colors && colors  # Load colors
@@ -29,67 +22,47 @@ setopt autocd # Automatically cd into typed directory.
 setopt interactive_comments
 
 HISTFILE=~/.cache/histfile
+HIST_STAMPS="mm-dd-yyyy"
 HISTSIZE=9000
 SAVEHIST=9000
 
 # vi mode
 bindkey -v
 #zstyle ':autocomplete:*' default-context history-incremental-search-backward
-bindkey '^R' history-incremental-search-backward
-export KEYTIMEOUT=1
+#bindkey '^R' history-incremental-search-backward
+export KEYTIMEOUT=10
 
-# Use vim keys in tab complete menu:
-#bindkey -M menuselect 'h' vi-backward-char
-#bindkey -M menuselect 'k' vi-up-line-or-history
-#bindkey -M menuselect 'l' vi-forward-char
-#bindkey -M menuselect 'j' vi-down-line-or-history
-#bindkey -v '^?' backward-delete-char
-
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp" >/dev/null
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
 
 # Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
+CASE_SENSITIVE='true'
+COMPLETION_WAITING_DOTS='true'
 
 ## Alias
+##alias cd='z'
 alias lla='ls -lhtra'
-##alias ls='ls --color=auto'
-alias ls='exa'
+alias ls='ls --color=auto'
+alias exa='eza'
+alias ls='eza'
 alias ll='exa --header --icons --long --all --sort type'
 alias la='exa --header --icons --long --all --sort type'
 alias lg='exa --header --group --long --icons --all --git'
-alias l.="ls -A | grep -E '^\.'"
-##alias las='find . maxdepth 1 -type l -printf "%p -> %l\n" | sort'
+alias l.='ls -A | grep -E "^\."'
 alias git='noglob git'
 alias cat='bat -p'
 alias catn='bat -n'
-alias codeenv='sh ~/bin/tmux.sh'
+alias codeenv='sh ~/bin/tmux'
 alias weather='weatherfunc'
-alias wallpaper='sh ~/bin/wallpaper.sh'
-alias updateAWSCDK='sh ~/bin/update_awscdk.sh'
-alias updateSSHShared='sh ~/bin/UpdateSSHShared.sh'
-alias updateOMZSH='omz update'
-alias pastebin='sh ~/bin/pastebin.sh'
-alias awslogin='sh ~/bin/awslogin.sh'
-alias fix_keyboard='sh ~/bin/keyboard.sh'
+alias wallpaper='sh ~/bin/wallpaper'
+alias updateAWSCDK='sh ~/bin/update_awscdk'
+alias updateSSHShared='sh ~/bin/UpdateSSHShared'
+alias pastebin='sh ~/bin/pastbin'
+alias awslogin='sh ~/bin/awslogin'
+alias fix_keyboard='sh ~/bin/keyboard'
 alias mount_nas='sh ~/bin/mount_nas.sh'
 alias umount_nas='sh ~/bin/umount_nas.sh'
 alias externalip='w3m -dump whatismyip.akamai.com'
-alias screen_saving_on='xset +dpms'
-alias screen_saving_off='xset -dpms'
-alias home='autorandr -l home'
-alias work='autorandr -l work'
-alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+alias tf='terraform'
+alias fcd='cd ~ && cd $(fd --type d | fzf)'
 
 # Dotfiles handeling
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -103,20 +76,12 @@ alias emacsc='emacsclient -c -a "emacs"'
 
 ## Zsh Stuff
 alias vZ='nvim ~/.zshrc'
-alias vZP='nvim ~/.zshrc'
+alias vzP='nvim ~/.zsh_profile'
 alias reloadZ='source ~/.zshrc'
 
 ## Bash Stuff
 alias vB='nvim ~/.bashrc'
 alias vBP='nvim ~/.bash_profile'
-
-## Configurations i3wm
-alias vi3C='nvim ~/.config/i3/config'
-alias vi3S='nvim ~/.config/i3/i3status.conf'
-#alias vi3S='vim ~/.config/i3/status.toml'
-## Configurations Xmonad
-alias vxC='nvim ~/.xmonad/xmonad.hs'
-alias vxB='nvim ~/.config/xmobar/xmobarrc'
 
 ## Git Stuff
 alias vgC='vim ~/.gitconfig'
@@ -129,69 +94,43 @@ alias gP='git push'
 alias gp='git pull'
 alias gc='git commit -m'
 
-## coding folders
-alias cdc='cd ~/code'
-alias cdg='cd ~/git'
-alias cdd='cd ~/.dotfiles'
-alias cdn='cd ~/.config/nvim'
-#alias dev='sh ~/bin/dev'
-#alias devcode='sh ~/bin/devcode'
-#alias devsql='sh ~/bin/devsql'
-alias router='sh ~/bin/configrouter.sh'
 
-## SSH alias
+## SSH
 alias vsC='nvim ~/.ssh/config'
 alias vsK='nvim ~/.ssh/known_hosts'
+alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
 
 ## Navigation
 alias cdc='cd ~/code'
-alias cdI='cd ~/.config/i3'
+alias cdd='cd ~/.dotfiles'
+alias cdn='cd ~/.config/nvim'
+alias router='sh ~/bin/configrouter.sh'
 
 # Exit terminal
 alias k='exit'
 
 ## Net
-alias NM='sudo /etc/init.d/NetworkManager restart'
 alias yt="youtube-dl --add-metadata -ic" # Downloads video link
 alias yta="youtube-dl --add-metadata -xic" # Downloads only audio
-
-## Pacman
-alias p='paru -S'
-alias pac='sudo pacman -S'
-alias pac-r='sudo pacman -Rcns'
-alias pac-s='sudo pacman -Ss'
-#alias Upgrade='sudo pacman -Syu'
-alias pacLog='tail -f /var/log/pacman.log'
-alias Unlock='sudo rm /var/lib/pacman/db.lck'
 
 ## Apps
 alias irc='weechat-curses'
 alias r='ranger'
 
-## News and Music
-alias MP='ncmpcpp'
-alias news='newsbeuter'
-alias M='mpv'
-
-# SSH Tunnels
-alias ryper='ssh -fNR 7777:localhost:22 tunnel@ryper.org'
-
-
-## Tmux and Byobu
+## Tmux
 alias tnew='tmux new -s'
 alias tath='tmux a -t'
 alias vT='vim ~/.tmux.conf'
-alias b='byobu'
 
-# Ensure DK modifiers
-xmodmap ~/.Xmodmapus
+# tmux-sessionizer
+#bindkey -s ^f "tmux-sessionizer\n"
 
 # SSH-agent
-if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
-  eval `ssh-agent -s` > /dev/null
-#  ssh-add -q ~/.ssh/*.pem
-  ssh-add -q ~/.ssh/id_rsa
-fi
+#if [ -z $SSH_AGENT_PID ] && [ -z $SSH_TTY ]; then  # if no agent & not in ssh
+#  eval `ssh-agent -s` > /dev/null
+##  ssh-add -q ~/.ssh/*.pem
+#  ssh-add -q ~/.ssh/id_ed25519
+#fi
 
 
 # User configuration
@@ -206,11 +145,82 @@ function weatherfunc() {
         curl wttr.in/$1
     fi
 }
+# Create a folder and move into it in one command
+function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# loading zsh theme and addons
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+#eval "$(starship init zsh)"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+
+# --- setup fzf theme ---
+fg="#CBE0F0"
+bg="#011628"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
+cyan="#2CF9ED"
+
+export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+
+# -- Use fd instead of fzf --
+
+#export FZF_DEFAULT_COMMAND="fd . $HOME"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+source ~/fzf-git.sh/fzf-git.sh
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ------ Bat (better cat) ---------
+export BAT_THEME=tokyonight_night
+

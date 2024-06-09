@@ -71,7 +71,7 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 # PrintScreen
 bindsym Print exec /usr/bin/flameshot gui
 #bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+#bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 #bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 #bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
@@ -148,16 +148,27 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+#set $ws1 "1: "
+#set $ws2 "2: "
+#set $ws3 "3: "
+#set $ws4 "4: "
+#set $ws5 "5: "
+#set $ws6 "6: "
+#set $ws7 "7: "
+#set $ws8 "8: "
+#set $ws9 "9: "
+#set $ws10 "10: "
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -362,11 +373,11 @@ for_window [class="feh"] floating enable
 #for_window [class="Signal"] floating enable
 
 # Surfshark
-#for_window [class="Surfshark"] sticky enable border none
-#for_window [class="Surfshark"] move to scratchpad
-#exec --no-startup-id surfshark
-#bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
-#for_window [class="Surfshark"] floating enable
+for_window [class="Surfshark"] sticky enable border none
+for_window [class="Surfshark"] move to scratchpad
+exec --no-startup-id surfshark
+bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
+for_window [class="Surfshark"] floating enable
 
 # Joplin
 for_window [class="^Joplin$"] move to scratchpad
