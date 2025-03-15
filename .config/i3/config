@@ -239,6 +239,7 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Surfshark"] floating enable
+for_window [class="obsidian"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -349,12 +350,6 @@ for_window [class="1Password"] move to scratchpad
 exec --no-startup-id 1password
 bindsym $mod+p [class="1Password"] scratchpad show resize set 800 550
 
-# Telegram
-#for_window [class="TelegramDesktop$"] sticky enable border none
-#for_window [class="TelegramDesktop$"] move to scratchpad
-#exec --no-startup-id telegram-desktop
-#bindsym $mod+i [class="TelegramDesktop$"] scratchpad show resize set 1000 750
-#for_window [class="TelegramDesktop$"] floating enable
 
 # Discord
 #for_window [class="discord"] move to scratchpad
@@ -373,17 +368,31 @@ for_window [class="feh"] floating enable
 #for_window [class="Signal"] floating enable
 
 # Surfshark
-for_window [class="Surfshark"] sticky enable border none
-for_window [class="Surfshark"] move to scratchpad
-exec --no-startup-id surfshark
-bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
-for_window [class="Surfshark"] floating enable
+#for_window [class="Surfshark"] sticky enable border none
+#for_window [class="Surfshark"] move to scratchpad
+#exec --no-startup-id surfshark
+#bindsym $mod+Shift+s [class="Surfshark"] scratchpad show resize set 800 550
+#for_window [class="Surfshark"] floating enable
+
+# NordVPN
+#for_window [class="NordVPN"] sticky enable border none
+#for_window [class="NordVPN"] move to scratchpad
+#exec --no-startup-id nordvpn
+#bindsym $mod+Shift+s [class="NordVPN"] scratchpad show resize set 800 550
+#for_window [class="NordVPN"] floating enable
 
 # Joplin
-for_window [class="^Joplin$"] move to scratchpad
-exec --no-startup-id joplin-desktop
-bindsym $mod+Shift+n [class="^Joplin$"] scratchpad show
+#for_window [class="^Joplin$"] move to scratchpad
+#exec --no-startup-id joplin-desktop
+#bindsym $mod+Shift+n [class="^Joplin$"] scratchpad show
 
+# Obsidian
+#for_window [class="obsidian$"] sticky enable border none
+for_window [class="obsidian$"] move to scratchpad
+exec --no-startup-id obsidian
+bindsym $mod+Shift+i [class="obsidian$"] scratchpad show
+#resize set 1200 750
+for_window [class="obsidian$"] floating enable
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
