@@ -14,7 +14,7 @@ return {
             require("catppuccin").setup({
                 disable_background = true
             })
-            vim.cmd.colorscheme("catppuccin")
+            --            vim.cmd.colorscheme("catppuccin")
         end
     },
     {
@@ -36,7 +36,7 @@ return {
                     foats = "dark", -- style for floating windows
                 },
             })
-            --            vim.cmd("colorscheme tokyonight")
+            vim.cmd("colorscheme tokyonight")
         end
     },
     {
@@ -54,7 +54,13 @@ return {
         "Mofiqul/dracula.nvim",
         config = function()
             require('dracula').setup({
-                disable_background = true
+                disable_background = true,
+                transparent_bg = true,
+                colors = {},
+                overrides = {},
+                show_end_of_buffer = false,
+                italic_comment = false,
+
             })
         end
     },

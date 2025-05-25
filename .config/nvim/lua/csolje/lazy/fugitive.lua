@@ -6,7 +6,7 @@ return {
             vim.keymap.set("n", "<leader>ga", vim.cmd.Gwrite);
             vim.keymap.set("n", "<leader>gb", function()
                 vim.cmd.Git('blame')
-            end, opts );
+            end);
 
             local csolje_Fugitive = vim.api.nvim_create_augroup("csolje_Fugitive", {})
 
@@ -21,14 +21,14 @@ return {
 
                     local bufnr = vim.api.nvim_get_current_buf()
                     local opts = {buffer = bufnr, remap = false}
-                    vim.keymap.set("n", "<leader>p", function()
+                    vim.keymap.set("n", "<leader>P", function()
                         vim.cmd.Git('push')
                     end, opts)
 
-                    -- rebase always
-                    vim.keymap.set("n", "<leader>P", function()
-                        vim.cmd.Git({'pull',  '--rebase'})
+                    vim.keymap.set("n", "<leader>p", function()
+                        vim.cmd.Git({'pull', '--rebase'})
                     end, opts)
+
                     -- show the git log
                     vim.keymap.set("n", "<leader>l", function()
                         vim.cmd.Git('log')
