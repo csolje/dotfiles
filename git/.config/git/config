@@ -1,0 +1,225 @@
+[user]
+    name = Christian Solje
+    email = csolje@gmail.com
+
+[commit]
+    template = ~/.config/git/template
+    verbose = true
+
+[core]
+    autocrlf = input # keep newlines as in input
+    compression = 9
+    fsync = none
+    whitespace = error # threat incorrect whitespace as errors
+    preloadindex = true # preload index for faster status
+
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
+
+[blame]
+    coloring = highlightRecent
+    date = relative
+
+[diff]
+    context = 3 # less context in diffs
+    renames = copies # detect copies as renames in diff
+    interHunkContext = 10 # merge near hunks in diffs
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+
+[init]
+    defaultBranch = main
+
+[log]
+    abbrevCommit = true # short commits
+    graphColors = blue,yellow,cyan,magenta,green,red
+
+[status]
+    branch = true
+    short = true
+    showStash = true
+    showUntrackedFiles = all # show individual untracked files
+
+[pager]
+    branch = false # no need to use pager for git branch
+    tag = false
+    diff = diff-so-fancy | $PAGER # diff-so-fancy as diff pager
+    #diff = delta | $PAGER # diff-so-fancy as diff pager
+
+[push]
+    autoSetupRemote = true # easier to push new branches
+    default = current # push only current branch by default
+    followTags = true # push also tags
+    #gpgSign = false # my remotes doesn't support sign pushes
+
+[pull]
+    rebase = true
+    default = current
+
+[submodule]
+    fetchJobs = 16
+
+
+[fetch]
+    fsckObjects = true
+    prune = true
+    #prunetags = true
+    #all = true
+
+[help]
+    autocorrect = prompt
+
+[rebase]
+    autoSquash = true
+    autoStash = true
+    missingCommitsCheck = warn # warn if rebasing with missing commits
+
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[column]
+    ui = auto
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = -taggerdate
+
+# Integrity
+[transfer]
+    fsckObjects = true
+
+[receive]
+    fsckObjects = true
+
+
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+
+# Colors
+[color "blame"]
+    highlightRecent = black bold,1 year ago,white,1 month ago,default,7 days ago,blue
+
+[color "branch"]
+    current  = magenta
+    local    = default
+    remote   = yellow
+    upstream = green
+    plain    = blue
+
+[color "diff"]
+    meta       = black bold
+    frag       = magenta
+    context    = white
+    whitespace = yellow reverse
+    old        = red
+
+[color.decorate]
+    HEAD = red
+    branch = blue
+    tag = yellow
+    remoteBranch = magenta
+
+[interactive]
+    diffFilter = diff-so-fancy --patch
+    #diffFilter = delta --color-only --features=ineractive
+    singlekey = true
+
+# Third-party: diff-so-fancy
+[diff-so-fancy]
+    markEmptyLines = false
+
+[delta]
+    navigate = true      # use n and N to move between diff sections
+    side-by-side = true
+    features = decorations
+    true-color = always
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style         = blue ol
+    commit-style                    = raw
+    file-style                      = omit
+    hunk-header-decoration-style    = blue box
+    hunk-header-file-style          = red
+    hunk-header-line-number-style   = "#067a00"
+    hunk-header-style               = file line-number syntax
+
+# URL shortcuts
+[url "git@github.com:"]
+    insteadOf = "gh:"
+
+[url "git@github.com:csolje/"]
+    insteadOf = "cs:"
+
+[alias]
+    # basic
+    st = status -sb
+    ci = commit
+    ac = "!git add -A && git commit"
+    br = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+    sw = switch
+    r = reset
+    cp = cherry-pick
+    gr = grep -Ii
+    bra = branch -ra
+    ai = add --interactive
+    # repo cleanup
+    cleanup = "remote prune origin"
+
+    # commit
+    cm = commit -m
+
+    # Nuke hard reset and pulls new updates
+    nuke = !git clean -fdx & git reset head --hard & git pull
+
+    # log commands
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	ll = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    ln = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lg = log --pretty=format:"\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\"" --graph --date=relative --decorate --all
+    hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+    fl = log -u
+
+    # reset commands
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
+
+    # stash
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+
+     #list remotes
+    rem="!git config -l | grep remote.*url | tail -n +2"
+
+   # list all aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+
+    # worktree list
+    wl = worktree list
+    # undo from here http://megakemp.com/2016/08/25/git-undo/
+    undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
+[credential]
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

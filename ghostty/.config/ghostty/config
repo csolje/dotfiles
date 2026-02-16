@@ -1,0 +1,36 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+# Setting theme
+#background = 282c34
+#foreground = ffffff
+theme = "catppuccin-mocha.conf"
+background-opacity = 0.95
+background-blur-radius = 20
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+keybind = ctrl+z=close_surface
+keybind = ctrl+shift+/=new_split:right
+keybind = global:ctrl+super+g=toggle_quick_terminal
+
+# Setting fonts
+font-family = "MesloLGLDZ Nerd Font"
+#font-family = "JetBrains Mono Nerd Font"
+font-size = 14
+
+cursor-style = block
+
+
+# Settings for windows
+quick-terminal-position = top
+quick-terminal-screen = mouse
+
+# Configurations for the behavier in macos
+macos-auto-secure-input = true
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+macos-non-native-fullscreen = true
+confirm-close-surface = false
+quit-after-last-window-closed = true
+gtk-single-instance = true
