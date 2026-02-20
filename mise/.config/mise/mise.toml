@@ -1,0 +1,5 @@
+[tools]
+azure = "latest"
+node = "25"
+python = "3.12"
+rust = "latest"

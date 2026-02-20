@@ -1,8 +1,3 @@
-.DS_Store
-**/.DS_Store
-karabiner/.config/karabiner/node_modules/*
-karabiner/.config/karabiner/automatic_backups/*
-karabiner/.config/karabiner/yarn.lock
 nvim/.config/nvim/tmp/*
 nvim/.config/nvim/lazy-lock.json
 nvim/.config/nvim/bundle/*
@@ -19,3 +14,4 @@ nvim/.config/nvim/lazy-lock.json
 tmux/.config/tmux/plugins/*
 tmux-sessionizer/share/*
 tmux-sessionizer/state/*
+

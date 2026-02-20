@@ -82,15 +82,16 @@ alias la='exa --header --icons --long --all --sort=type'
 alias lg='exa --header --group --long --icons --all --git'
 alias l.='ls -A | grep -E "^\."'
 alias git='noglob git'
-alias cat='bat -p'
-alias catf='bat'
-alias catn='bat -n'
+alias cat='batcat -p'
+alias catf='batcat'
+alias catn='batcat -n'
 alias diff='delta'
 alias weather='weatherfunc'
 alias externalip='w3m -dump whatismyip.akamai.com'
 alias tf='terraform'
 alias frcd='cd ~ && cd $(fd --type d | fzf)'
 alias fcd='cd $(fd --type d | fzf)'
+alias op="/mnt/c/Users/ChristianSolje/AppData/Local/Microsoft/WinGet/Packages/AgileBits.1Password.CLI_Microsoft.Winget.Source_8wekyb3d8bbwe/./op.exe"
 
 ## editor stuff
 alias v='nvim'
@@ -98,6 +99,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias nf='vi $(fd --type f | fzf)'
 alias em='emacsclient -c -a "emacs"'
+alias nvimclean='rm -rf ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim/'
 
 ## Shell profiles and rc's
 alias vZ='nvim ~/.zshrc'
@@ -236,7 +238,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # Setup fzf previews
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_CTRL_T_OPTS="--preview 'batcat --color=always -n --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
 
 # fzf preview for tmux
@@ -253,7 +255,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else batcat -n --color=always --line-range :500 {}; fi"
 
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
@@ -269,14 +271,14 @@ _fzf_comprun() {
     *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
 }
-# Make all kubectl completion fzf
-command -v fzf >/dev/null 2>&1 && {
-	source <(kubectl completion zsh | sed 's#${requestComp} 2>/dev/null#${requestComp} 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
-}
+## Make all kubectl completion fzf
+#command -v fzf >/dev/null 2>&1 && {
+#	source <(kubectl completion zsh | sed 's#${requestComp} 2>/dev/null#${requestComp} 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
+#}
 # ------ Bat (better cat) ---------
 #export BAT_THEME="Catppuccin Mocha"
 ##eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen_v2.toml)"
+#eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen_v2.toml)"
 #compdef gt
 ###-begin-gt-completions-###
 #
@@ -311,4 +313,8 @@ source <(jj util completion zsh)
 eval "$(atuin init zsh)"
 #bindkey '^r' atuin-search-viins # Ctrl-r starts Atuin in insert mode
 
-. "$HOME/.atuin/bin/env"
+#. "$HOME/.atuin/bin/env"
+eval "$(~/.local/bin/mise activate zsh)"
+
+eval "$(/home/csol/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
